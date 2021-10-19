@@ -21,8 +21,9 @@ CREATE TABLE `usuarios` (
 ) ;
 
 CREATE TABLE `ropa` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `categoria` varchar(50)  NOT NULL,
-  `foto` varchar(50)  NOT NULL,
-  FOREIGN KEY (`idUsuario`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100)  NOT NULL,
+  `imagen` mediumblob  NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 );

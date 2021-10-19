@@ -35,7 +35,7 @@
                                     <span aria-hidden="true">&times;</span>
                                     <span class="sr-only">Close</span>
                                 </button>
-                                Registro insertado exitosamente
+                                Imagen insertada correctamente
                             </div>
                         <?php
                         } else {
