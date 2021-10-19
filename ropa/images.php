@@ -16,6 +16,8 @@
         <div class="row">
             <div class="col-12">
                 <?php
+                session_start();
+                $usuario = $_SESSION['username'];
                 if (isset($_REQUEST['guardar'])) {
                     if (isset($_FILES['foto']['name'])) {
                         $tipoArchivo = $_FILES['foto']['type'];
@@ -24,9 +26,8 @@
                         $imagenSubida = fopen($_FILES['foto']['tmp_name'], 'r');
                         $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                         $con = mysqli_connect("localhost", "root", "", "tfg");
-                        
                         $binariosImagen = mysqli_escape_string($con, $binariosImagen);
-                        $query = "INSERT INTO imagenes (nombre,imagen,tipo) values ('" . $nombreArchivo . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
+                        $query = "INSERT INTO imagenes (email,nombre,categoria,imagen,tipo) values ('" . $nombreArchivo . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
                         $res = mysqli_query($con, $query);
                         if ($res) {
                 ?>
