@@ -1,6 +1,6 @@
 <!-- BARRA NAVEGACIÓN -->
 <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-center">
-    <a href="index.php" class="navbar-brand mr-0">Armario</a>
+    
     <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,7 +13,7 @@
                 <a class="nav-link" href="//codeply.com">Codeply</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Ayuda</a>
             </li>
         </ul>
     </div>
