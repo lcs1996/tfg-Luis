@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <script src="../funciones/icons.js"></script>
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+  </script>
 
   <title></title>
 </head>
@@ -20,6 +29,7 @@
 session_start();
 $usuario = $_SESSION['username'];
 ?>
+
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
@@ -36,6 +46,11 @@ $usuario = $_SESSION['username'];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
+          <a class="nav-link open-button" onclick="openForm()" id="link">
+            <i class="fas fa-upload"></i>
+            Subir foto<span class="sr-only">(current) </span></a>
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" id="link" href="../logica/salir.php">
             <i class="fas fa-sign-out-alt"></i>
             Cerrar Sesión<span class="sr-only">(current) </span></a>
@@ -47,7 +62,7 @@ $usuario = $_SESSION['username'];
   <div class="wrapper fixed-left">
     <nav id="sidebar">
       <div class="sidebar-header">
-        <h7><i class="fas fa-user"></i><?php  echo "$usuario" ?></h7>
+        <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
       </div>
 
       <ul class="list-unstyled components">
@@ -70,9 +85,9 @@ $usuario = $_SESSION['username'];
     </nav>
     <div id="content">
       <?php
-      
+
       include("../contenido.php");
-      
+
       ?>
     </div>
   </div>
@@ -81,7 +96,7 @@ $usuario = $_SESSION['username'];
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="../funciones/script.js"></script>
-  
+
 </body>
 
 </html>

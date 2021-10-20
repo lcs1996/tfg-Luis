@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href="../funciones/estilo.css" rel="stylesheet" type="text/css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -16,10 +16,11 @@
         <div class="row">
             <div class="col-12">
                 <?php
-                session_start();
-                $usuario = $_SESSION['username'];
+                
+                
                 if (isset($_REQUEST['guardar'])) {
                     if (isset($_FILES['foto']['name'])) {
+                        $ropa=$_POST['ropa'];
                         $tipoArchivo = $_FILES['foto']['type'];
                         $nombreArchivo = $_FILES['foto']['name'];
                         $tamanoArchivo = $_FILES['foto']['size'];
@@ -27,7 +28,7 @@
                         $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                         $con = mysqli_connect("localhost", "root", "", "tfg");
                         $binariosImagen = mysqli_escape_string($con, $binariosImagen);
-                        $query = "INSERT INTO imagenes (email,nombre,categoria,imagen,tipo) values ('" . $nombreArchivo . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
+                        $query = "INSERT INTO imagenes (email,nombre,categoria,imagen,tipo) values ('" . $usuario . "','" . $nombreArchivo . "','" . $ropa . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
                         $res = mysqli_query($con, $query);
                         if ($res) {
                 ?>
@@ -54,15 +55,29 @@
                     }
                 }
                 ?>
-                <form method="post" enctype="multipart/form-data">
+                <div class="form-popup" id="myForm">
+                <form method="post" enctype="multipart/form-data" >
+                <div class="form-group">
+                    <select name="ropa" class="form-control-file">
+                        <option value="#">--None--</option>
+                        <option value="camiseta">Camiseta</option>
+                        <option value="pantalones">Pantalones</option>
+                        <option value="sudadera">Sudadera</option>
+                        <option value="zapatillas">Zapatillas</option>
+                        <option value="accesorio">Accesorio</option>
+                    </select>               
+                </div>
                     <div class="form-group">
                         <input type="file" class="form-control-file" name="foto">
                     </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="guardar">Enviar</button>
+                    
+                        <button type="button" class="btn  cancel" onclick="closeForm()">Cancelar</button>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     </div>
