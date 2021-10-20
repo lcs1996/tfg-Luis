@@ -69,7 +69,7 @@ $usuario = $_SESSION['username'];
           <a href="../index.php"><i class="fas fa-home"></i>Inicio</a>
         </li>
         <li>
-          <a href="menu_favs.php"><i class="fas fa-star"></i>Favoritos</a>
+          <a href=""><i class="fas fa-star"></i>Favoritos</a>
         </li>
         <li>
           <a href=""><i class="fas fa-user-cog"></i>Ajustes</a>
@@ -82,7 +82,7 @@ $usuario = $_SESSION['username'];
     <div id="content">
       <?php
 
-      include("../contenido.php");
+      
 
       ?>
     </div>

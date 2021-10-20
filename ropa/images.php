@@ -58,8 +58,8 @@
                 <div class="form-popup" id="myForm">
                 <form method="post" enctype="multipart/form-data" >
                 <div class="form-group">
-                    <select name="ropa" class="form-control-file">
-                        <option value="#">--None--</option>
+                    <select name="ropa" class="form-control-file" required>
+                        <option value="#">Elige tipo...</option>
                         <option value="camiseta">Camiseta</option>
                         <option value="pantalones">Pantalones</option>
                         <option value="sudadera">Sudadera</option>

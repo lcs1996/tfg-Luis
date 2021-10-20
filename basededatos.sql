@@ -22,7 +22,9 @@ CREATE TABLE `usuarios` (
 
 CREATE TABLE `ropa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
   `nombre` varchar(100)  NOT NULL,
+  `categoria` varchar(100) NOT NULL,
   `imagen` mediumblob  NOT NULL,
   `tipo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)

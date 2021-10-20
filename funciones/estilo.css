@@ -92,7 +92,7 @@ body {
 }
 
 .blue {
-  background: #2abdfc;
+  background: #6a76f8;
   color: #fff;
 }
 
@@ -124,7 +124,7 @@ i {
 }
 
 #sidebarCollapse:hover {
-  color: #2abdfc;
+  color: #6a76f8;
   background: #fff;
   outline: none;
 }
@@ -178,14 +178,14 @@ i {
 }
 
 #sidebar ul li a:hover {
-  color: #6240bd;
+  color: #6a76f8;
   background: #fff;
   text-decoration: none;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
-  background: #8a5fff;
+  background: #6a76f8;
 }
 
 a[data-toggle="collapse"] {
