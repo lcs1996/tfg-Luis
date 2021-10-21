@@ -27,28 +27,61 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   }
-
 </style>
 <?php
 $usuario = $_SESSION['username'];
 ?>
+
 <body>
+  <label>
+    <h6>Buscar articulos por categoria:</h6>
+  </label>
+  <form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <select name="ropa" class="custom-select">
+        <option value="camiseta">Camiseta</option>
+        <option value="pantalones">Pantalones</option>
+        <option value="sudadera">Sudadera</option>
+        <option value="zapatillas">Zapatillas</option>
+        <option value="accesorio">Accesorio</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" name="buscar">Búsqueda</button>
+    </div>
+  </form>
+  <hr>
   <div class="container">
     <div class="row d-flex flex-wrap align-items-center" data-toggle="modal" data-target="#lightbox">
 
       <?php
-      
-      $con = mysqli_connect("localhost", "root", "", "tfg");
-      $query = "SELECT * FROM imagenes where email='" . $usuario . "';";
-      $res = mysqli_query($con, $query);
-      while ($row = mysqli_fetch_assoc($res)) {
+      if (isset($_POST['buscar'])) {
+        $con = mysqli_connect("localhost", "root", "", "tfg");
+        $ropa = $_POST['ropa'];
+        $query = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
+        $res = mysqli_query($con, $query);
+        while ($row = mysqli_fetch_assoc($res)) {
       ?>
-        <div class="col-12 col-md-6 col-lg-3">
-          <img src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" />
-          <a href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
-         <a href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Favorito</a>
-        </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <img src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" />
+            <a href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
+            <a href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Favorito</a>
+          </div>
+        <?php
+        }
+      } else {
+        $con = mysqli_connect("localhost", "root", "", "tfg");
+        $query = "SELECT * FROM imagenes where email='" . $usuario . "';";
+        $res = mysqli_query($con, $query);
+        while ($row = mysqli_fetch_assoc($res)) {
+        ?>
+          <div class="col-12 col-md-6 col-lg-3">
+            <img src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" />
+            <a href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
+            <a href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Favorito</a>
+          </div>
       <?php
+        }
       }
       ?>
     </div>
