@@ -27,17 +27,17 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   }
-
 </style>
 <?php
 $usuario = $_SESSION['username'];
 ?>
+
 <body>
   <div class="container">
     <div class="row d-flex flex-wrap align-items-center" data-toggle="modal" data-target="#lightbox">
 
       <?php
-      
+
       $con = mysqli_connect("localhost", "root", "", "tfg");
       $query = "SELECT imagenes.id,imagenes.email,imagenes.nombre,imagenes.categoria,imagenes.imagen,imagenes.tipo,img_favs.id
        FROM imagenes 
@@ -49,7 +49,7 @@ $usuario = $_SESSION['username'];
       ?>
         <div class="col-12 col-md-6 col-lg-3">
           <img src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" />
-          <a href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
+          <a href="../ropa/eliminar_fav.php?id=<?php echo $row['id']; ?>">Eliminar favoritos</a>
         </div>
       <?php
       }
