@@ -45,7 +45,7 @@ $usuario = $_SESSION['username'];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link open-button" onclick="openForm()" id="link">
+          <a class="nav-link open-button" onclick="openForm()" id="link" href="#">
             <i class="fas fa-upload"></i>
             Subir foto<span class="sr-only">(current) </span></a>
         </li>
@@ -69,7 +69,7 @@ $usuario = $_SESSION['username'];
           <a href="../index.php"><i class="fas fa-home"></i>Inicio</a>
         </li>
         <li>
-          <a href=""><i class="fas fa-star"></i>Favoritos</a>
+          <a href="menu_favs.php"><i class="fas fa-star"></i>Favoritos</a>
         </li>
         <li>
           <a href=""><i class="fas fa-user-cog"></i>Ajustes</a>
@@ -82,7 +82,7 @@ $usuario = $_SESSION['username'];
     <div id="content">
       <?php
 
-      include("../ropa/leeimagen_fav.php");
+      include("../contenido.php");
 
       ?>
     </div>

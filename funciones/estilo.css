@@ -254,6 +254,7 @@ a[data-toggle="collapse"] {
 
 /* The popup form - hidden by default */
 .form-popup {
+  background-color: white;
   display: none;
   position: fixed;
   bottom: 0;

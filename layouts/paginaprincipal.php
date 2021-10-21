@@ -17,7 +17,7 @@
 
 <body>
   <header>
-    <?php require('menuvertical.php') ?>
+    <?php require('menuprincipal.php') ?>
   </header>
 
 
