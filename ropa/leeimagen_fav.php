@@ -48,13 +48,37 @@ $usuario = $_SESSION['username'];
       while ($row = mysqli_fetch_assoc($res)) {
       ?>
         <div class="col-12 col-md-6 col-lg-3">
-          <img src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" />
-          <a href="../ropa/eliminar_fav.php?id=<?php echo $row['id']; ?>">Eliminar favoritos</a>
+          <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <!--Content-->
+              <div class="modal-content">
+                <!--Body-->
+                <div class="modal-body mb-0 p-0">
+                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                    <iframe class="embed-responsive-item" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <form action="../ropa/add_calendario.php?id=<?php echo $row['id']; ?>" method="POST">
+                      <label for="cal">Fecha: </label>
+                      <input type="date" id="cal" name="fecha">
+                      <button type="submit" class="btn btn-primary" name="anadir"> Añadir</button>
+                    </form>
+                  <a class="btn btn-outline-primary btn-rounded btn-md ml-4" href="../ropa/eliminar_fav.php?id=<?php echo $row['id']; ?>">Eliminar favoritos</a>
+                  <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+          <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
         </div>
-      <?php
-      }
-      ?>
     </div>
+  <?php
+      }
+  ?>
+  </div>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

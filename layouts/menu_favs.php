@@ -69,7 +69,10 @@ $usuario = $_SESSION['username'];
           <a href="../index.php"><i class="fas fa-home"></i>Inicio</a>
         </li>
         <li>
-          <a href=""><i class="fas fa-star"></i>Favoritos</a>
+          <a href="menu_favs.php"><i class="fas fa-star"></i>Favoritos</a>
+        </li>
+        <li>
+          <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
         </li>
         <li>
           <a href=""><i class="fas fa-user-cog"></i>Ajustes</a>

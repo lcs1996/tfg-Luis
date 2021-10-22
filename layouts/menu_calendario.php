@@ -45,7 +45,7 @@ $usuario = $_SESSION['username'];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link open-button" onclick="openForm()" id="link" href="#">
+          <a class="nav-link open-button" onclick="openForm()" id="link">
             <i class="fas fa-upload"></i>
             Subir foto<span class="sr-only">(current) </span></a>
         </li>
@@ -85,11 +85,11 @@ $usuario = $_SESSION['username'];
     <div id="content">
       <?php
 
-      include("../contenido.php");
-     
-      ?>
+        include("../ropa/images.php");
 
-</div>
+        include("../ropa/leeimagen_calendario.php");
+
+      ?>
     </div>
   </div>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

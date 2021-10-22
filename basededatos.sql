@@ -10,17 +10,17 @@ grant all privileges on tfg.* to 'luis'@'localhost';
 -  */
 
 drop table if exists usuarios;
-drop table if exists ropa;
+drop table if exists imagenes;
 
 CREATE TABLE `usuarios` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50)  NOT NULL,
   `email` varchar(100)  NOT NULL,
   `contrasena` varchar(50) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
+  PRIMARY KEY (`id`)
 ) ;
 
-CREATE TABLE `ropa` (
+CREATE TABLE `imagenes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `nombre` varchar(100)  NOT NULL,
@@ -28,4 +28,13 @@ CREATE TABLE `ropa` (
   `imagen` mediumblob  NOT NULL,
   `tipo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `img_favs` (
+  `id` int(11)
+);
+
+CREATE TABLE `add_calendario` (
+  id int(11),
+  fecha date
 );
