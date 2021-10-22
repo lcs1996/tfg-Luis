@@ -62,7 +62,10 @@ $usuario = $_SESSION['username'];
         $query = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
         $res = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($res)) {
+      $tipo=$row['tipo'];
+      $imagen=$row['imagen'];    
       ?>
+      
           <div class="col-12 col-md-6 col-lg-3">
             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
@@ -71,7 +74,7 @@ $usuario = $_SESSION['username'];
                   <!--Body-->
                   <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      <iframe class="embed-responsive-item" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" allowfullscreen></iframe>
+                      <iframe class="embed-responsive-item" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>" allowfullscreen></iframe>
                     </div>
                   </div>
                   <!--Footer-->
@@ -90,7 +93,7 @@ $usuario = $_SESSION['username'];
                 <!--/.Content-->
               </div>
             </div>
-            <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
+            <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
           </div>
         <?php
         }
@@ -99,6 +102,8 @@ $usuario = $_SESSION['username'];
         $query = "SELECT * FROM imagenes where email='" . $usuario . "';";
         $res = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($res)) {
+          $tipo=$row['tipo'];
+          $imagen=$row['imagen']; 
         ?>
           <div class="col-12 col-md-6 col-lg-3">
             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -108,7 +113,7 @@ $usuario = $_SESSION['username'];
                   <!--Body-->
                   <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      <iframe class="embed-responsive-item" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" allowfullscreen></iframe>
+                      <img class="embed-responsive-item" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>"></img>
                     </div>
                   </div>
                   <!--Footer-->
@@ -127,7 +132,7 @@ $usuario = $_SESSION['username'];
                 <!--/.Content-->
               </div>
             </div>
-            <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
+            <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
           </div>
       <?php
         }
