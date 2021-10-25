@@ -62,24 +62,33 @@ $usuario = $_SESSION['username'];
         $query = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
         $res = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($res)) {
-      $tipo=$row['tipo'];
-      $imagen=$row['imagen'];    
+          $tipo = $row['tipo'];
+          $imagen = $row['imagen'];
       ?>
-      
-          <div class="col-12 col-md-6 col-lg-3">
+
+<div class="col-12 col-md-6 col-lg-3">
             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <!--Content-->
+                <?php
+                $conex = mysqli_connect("localhost", "root", "", "tfg");
+                $ropa = $_POST['ropa'];
+                $consulta = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
+                $result = mysqli_query($conex, $consulta);
+                 while ($fil = mysqli_fetch_assoc($result)) {
+                   $a=$fil['tipo'];
+                   $b = $fil['imagen'];
+                ?>
                 <div class="modal-content">
                   <!--Body-->
                   <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      <iframe class="embed-responsive-item" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>" allowfullscreen></iframe>
+                      <img class="embed-responsive-item" src="data:<?php echo $a; ?>;base64,<?php echo  base64_encode($b); ?>"></img>
                     </div>
                   </div>
                   <!--Footer-->
                   <div class="modal-footer justify-content-center">
-                    <form action="../ropa/add_calendario.php?id=<?php echo $row['id']; ?>" method="POST">
+                    <form action="../ropa/add_calendario.php?id=<?php echo $fil['id']; ?>" method="POST">
                       <label for="cal">Fecha: </label>
                       <input type="date" id="cal" name="fecha">
                       <button type="submit" class="btn btn-primary" name="anadir"> Añadir</button>
@@ -90,6 +99,9 @@ $usuario = $_SESSION['username'];
                     <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
                   </div>
                 </div>
+                <?php
+                 }
+                ?>
                 <!--/.Content-->
               </div>
             </div>
@@ -102,23 +114,31 @@ $usuario = $_SESSION['username'];
         $query = "SELECT * FROM imagenes where email='" . $usuario . "';";
         $res = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($res)) {
-          $tipo=$row['tipo'];
-          $imagen=$row['imagen']; 
+          $tipo = $row['tipo'];
+          $imagen = $row['imagen'];
         ?>
           <div class="col-12 col-md-6 col-lg-3">
             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <!--Content-->
+                <?php
+                $conex = mysqli_connect("localhost", "root", "", "tfg");
+                $consulta = "SELECT * FROM imagenes where email='" . $usuario . "';";
+                $result = mysqli_query($conex, $consulta);
+                 while ($fil = mysqli_fetch_assoc($result)) {
+                   $a=$fil['tipo'];
+                   $b = $fil['imagen'];
+                ?>
                 <div class="modal-content">
                   <!--Body-->
                   <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      <img class="embed-responsive-item" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>"></img>
+                      <img class="embed-responsive-item" src="data:<?php echo $a; ?>;base64,<?php echo  base64_encode($b); ?>"></img>
                     </div>
                   </div>
                   <!--Footer-->
                   <div class="modal-footer justify-content-center">
-                    <form action="../ropa/add_calendario.php?id=<?php echo $row['id']; ?>" method="POST">
+                    <form action="../ropa/add_calendario.php?id=<?php echo $fil['id']; ?>" method="POST">
                       <label for="cal">Fecha: </label>
                       <input type="date" id="cal" name="fecha">
                       <button type="submit" class="btn btn-primary" name="anadir"> Añadir</button>
@@ -129,6 +149,9 @@ $usuario = $_SESSION['username'];
                     <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
                   </div>
                 </div>
+                <?php
+                 }
+                ?>
                 <!--/.Content-->
               </div>
             </div>
