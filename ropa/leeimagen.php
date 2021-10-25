@@ -133,7 +133,7 @@ $usuario = $_SESSION['username'];
                   <!--Body-->
                   <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                      <img class="embed-responsive-item" src="data:<?php echo $a; ?>;base64,<?php echo  base64_encode($b); ?>"></img>
+                      <img class="embed-responsive-item" src="data:<?php echo $a; ?>;base64,<?php echo  base64_encode($b); ?>" data-target="#indicators" data-slide-to="0" alt="" ></img>
                     </div>
                   </div>
                   <!--Footer-->
