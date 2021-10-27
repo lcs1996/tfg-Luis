@@ -75,7 +75,7 @@ $usuario = $_SESSION['username'];
           <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
         </li>
         <li>
-          <a href=""><i class="fas fa-user-cog"></i>Ajustes</a>
+          <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
         </li>
         <li>
           <a href=""><i class="fas fa-info"></i>Acerca de</a>
