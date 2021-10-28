@@ -83,13 +83,10 @@ $usuario = $_SESSION['username'];
       </ul>
     </nav>
     <div id="content">
+        <h1>Sobre nosotros</h1>
       <?php
 
-      include("../contenido.php");
-     
       ?>
-
-</div>
     </div>
   </div>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

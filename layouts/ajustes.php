@@ -64,37 +64,12 @@ $usuario = $_SESSION['username'];
                     <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
                 </li>
                 <li>
-                    <a href=""><i class="fas fa-info"></i>Acerca de</a>
+                    <a href="acercade.php"><i class="fas fa-info"></i>Acerca de</a>
                 </li>
             </ul>
         </nav>
         <div id="content">
-            <?php
-            require '../logica/conexion.php';
-            if (isset($_POST['cambiar'])) {
-                
-                $usuario = $_SESSION['username'];
-
-                $antigua = $_POST['contra'];
-                $nueva = $_POST['nueva'];
-
-                $query = "UPDATE usuarios set contrasena='$nueva' 
-                where email='$usuario'";
-                $resultado = $conexion->query($query);
-            }
-            if (isset($_POST['cambiar']) && $resultado) {
-                ?>
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    <span class="sr-only">Close</span>
-                                </button>
-                                Contraseña cambiada correctamente
-                            </div>
-                <?php
-            } else {
-            ?>
-                <label for="">
+        <label for="">
                     <h6>Cambio de contraseña: </h6>
                 </label>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -117,7 +92,42 @@ $usuario = $_SESSION['username'];
                     </div>
                 </form>
             <?php
+            require '../logica/conexion.php';
+            if (isset($_REQUEST['cambiar'])) {
+                if ($_POST['nueva']==$_POST['repite']) {
+                
+                $usuario = $_SESSION['username'];
+
+                $antigua = $_POST['contra'];
+                $nueva = $_POST['nueva'];
+
+                $query = "UPDATE usuarios set contrasena='$nueva' 
+                where email='$usuario' and contrasena='$antigua'";
+                $resultado = mysqli_query($conexion,$query);
+            
+            if ($resultado) {
+                ?>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                Contraseña cambiada correctamente
+                            </div>
+                <?php
+            } else {
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                Error
+                            </div>
+            <?php
             }
+        }
+        }
             ?>
             <hr>
         </div>
