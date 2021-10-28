@@ -69,68 +69,95 @@ $usuario = $_SESSION['username'];
             </ul>
         </nav>
         <div id="content">
-        <label for="">
-                    <h6>Cambio de contraseña: </h6>
-                </label>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                    <div class="form-group">
-                        <div class="col-12">
-                            <label for="contra">Antigua contraseña: </label>
-                            <input type="password" id="contra" name="contra">
-                        </div>
-                        <div class="col-12">
-                            <label for="nueva">Nueva contraseña: </label>
-                            <input type="password" id="nueva" name="nueva">
-                        </div>
-                        <div class="col-12">
-                            <label for="repite">Repite contraseña: </label>
-                            <input type="password" id="repite" name="repite">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" name="cambiar"> Realizar cambios</button>
-                    </div>
-                </form>
-            <?php
-            require '../logica/conexion.php';
-            if (isset($_REQUEST['cambiar'])) {
-                if ($_POST['nueva']==$_POST['repite']) {
-                
-                $usuario = $_SESSION['username'];
+            <div id="accordion">
 
-                $antigua = $_POST['contra'];
-                $nueva = $_POST['nueva'];
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link " data-toggle="collapse" href="#collapseOne">
+                            Privacidad y seguridad
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <label for="">
+                                <h6>Cambio de contraseña: </h6>
+                            </label>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <label for="contra">Antigua contraseña: </label>
+                                        <input type="password" id="contra" name="contra">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="nueva">Nueva contraseña: </label>
+                                        <input type="password" id="nueva" name="nueva">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="repite">Repite contraseña: </label>
+                                        <input type="password" id="repite" name="repite">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" name="cambiar"> Realizar cambios</button>
+                                </div>
+                            </form>
+                            <?php
+                            require '../logica/conexion.php';
+                            if (isset($_REQUEST['cambiar'])) {
+                                if ($_POST['nueva'] == $_POST['repite']) {
 
-                $query = "UPDATE usuarios set contrasena='$nueva' 
+                                    $usuario = $_SESSION['username'];
+
+                                    $antigua = $_POST['contra'];
+                                    $nueva = $_POST['nueva'];
+
+                                    $query = "UPDATE usuarios set contrasena='$nueva' 
                 where email='$usuario' and contrasena='$antigua'";
-                $resultado = mysqli_query($conexion,$query);
-            
-            if ($resultado) {
-                ?>
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    <span class="sr-only">Close</span>
-                                </button>
-                                Contraseña cambiada correctamente
-                            </div>
-                <?php
-            } else {
-            ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    <span class="sr-only">Close</span>
-                                </button>
-                                Error
-                            </div>
-            <?php
-            }
-        }
-        }
-            ?>
-            <hr>
+                                    $resultado = mysqli_query($conexion, $query);
+
+                                    if ($resultado) {
+                            ?>
+                                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span>
+                                            </button>
+                                            Contraseña cambiada correctamente
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span>
+                                            </button>
+                                            Error
+                                        </div>
+                            <?php
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            Collapsible Group Item #2
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            Lorem ipsum..
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
