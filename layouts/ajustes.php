@@ -72,31 +72,26 @@ $usuario = $_SESSION['username'];
             <?php
             require '../logica/conexion.php';
             if (isset($_POST['cambiar'])) {
+                
+                $usuario = $_SESSION['username'];
+
                 $antigua = $_POST['contra'];
                 $nueva = $_POST['nueva'];
-                $q = "UPDATE usuarios set contrasena='$nueva' 
-                where contrasena='$antigua'";
-                $consulta = mysqli_query($conexion, $q);
-                $array = mysqli_fetch_array($consulta);
 
-                if (empty($_POST['contra'])) {
-                    $error[] = "Necesitas contraseña antigua";
-                }
-
-                if (empty($_POST['nueva'])) {
-                    $error[] = "Necesitas contraseña nueva";
-                }
+                $query = "UPDATE usuarios set contrasena='$nueva' 
+                where email='$usuario'";
+                $resultado = $conexion->query($query);
             }
-            if (isset($_POST['cambiar']) && empty($error)) {
-
-                session_start();
-
-                session_destroy();
-
-                header("location: ../index.php");
-
-                exit();
-
+            if (isset($_POST['cambiar']) && $resultado) {
+                ?>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                Contraseña cambiada correctamente
+                            </div>
+                <?php
             } else {
             ?>
                 <label for="">
@@ -112,17 +107,16 @@ $usuario = $_SESSION['username'];
                             <label for="nueva">Nueva contraseña: </label>
                             <input type="password" id="nueva" name="nueva">
                         </div>
+                        <div class="col-12">
+                            <label for="repite">Repite contraseña: </label>
+                            <input type="password" id="repite" name="repite">
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="cambiar"> Realizar cambios</button>
                     </div>
                 </form>
             <?php
-            }
-            if (isset($error)) {
-                foreach ($error as $errores) {
-                    echo "<li class='list-group-items'> $errores </li>";
-                }
             }
             ?>
             <hr>
