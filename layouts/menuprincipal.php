@@ -78,7 +78,7 @@ $usuario = $_SESSION['username'];
           <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
         </li>
         <li>
-          <a href="acercade.php"><i class="fas fa-info"></i>Acerca de</a>
+          <a href="menu_acercade.php"><i class="fas fa-info"></i>Acerca de</a>
         </li>
       </ul>
     </nav>

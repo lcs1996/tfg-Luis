@@ -1,100 +1,133 @@
-<!doctype html>
-<html lang="en">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <section id="services" class="current">
+        <div class="services-top">
+            <div class="container bootstrap snippets bootdey">
+                <div class="row text-center">
+                    <div class="col-sm-12 col-md-12 col-md-12">
+                        <h2>What We Offer</h2>
+                        <h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;">Our Services</h2>
+                        <p>Our <span class="highlight">experienced</span> and <span class="highlight">dedicated</span> staff provide these services with a smile.</p>
+                    </div>
+                    <style>
+                        #services {
+                            
+                        }
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        #services .services-top {
+                            padding: 70px 0 50px;
+                        }
 
-  <link href="../funciones/estilo.css" rel="stylesheet" type="text/css">
-  <!-- FONTAWESOME : https://kit.fontawesome.com/a23e6feb03.js -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                        #services .services-list {
+                            padding-top: 50px;
+                        }
 
-  <script src="../funciones/icons.js"></script>
-  <script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
+                        .services-list .service-block {
+                            margin-bottom: 25px;
+                        }
 
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-  </script>
-  <title></title>
-</head>
-<?php
-session_start();
-$usuario = $_SESSION['username'];
-?>
+                        .services-list .service-block .ico {
+                            font-size: 38px;
+                            float: left;
+                        }
 
-<body>
+                        .services-list .service-block .text-block {
+                            margin-left: 58px;
+                        }
 
-  <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
-    <button id="sidebarCollapse" class="btn navbar-btn">
-      <i class="fas fa-lg fa-bars"></i>
-    </button>
-    <a class="navbar-brand" href="../index.php">
-      <h3 id="logo">Menu</h3>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+                        .services-list .service-block .text-block .name {
+                            font-size: 20px;
+                            font-weight: 900;
+                            margin-bottom: 5px;
+                        }
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link open-button" onclick="openForm()" id="link" href="#">
-            <i class="fas fa-upload"></i>
-            Subir foto<span class="sr-only">(current) </span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" id="link" href="../logica/salir.php">
-            <i class="fas fa-sign-out-alt"></i>
-            Cerrar Sesión<span class="sr-only">(current) </span></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+                        .services-list .service-block .text-block .info {
+                            font-size: 16px;
+                            font-weight: 300;
+                            margin-bottom: 10px;
+                        }
 
-  <div class="wrapper fixed-left">
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
-      </div>
+                        .services-list .service-block .text-block .text {
+                            font-size: 12px;
+                            line-height: normal;
+                            font-weight: 300;
+                        }
 
-      <ul class="list-unstyled components">
-        <li>
-          <a href="../index.php"><i class="fas fa-home"></i>Inicio</a>
-        </li>
-        <li>
-          <a href="menu_favs.php"><i class="fas fa-star"></i>Favoritos</a>
-        </li>
-        <li>
-          <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
-        </li>
-        <li>
-          <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
-        </li>
-        <li>
-          <a href="acercade.php"><i class="fas fa-info"></i>Acerca de</a>
-        </li>
-      </ul>
-    </nav>
-    <div id="content">
-        <h1>Sobre nosotros</h1>
-      <?php
-
-      ?>
-    </div>
-  </div>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="../funciones/script.js"></script>
-
-</body>
-
-</html>
+                        .highlight {
+                            color: #2ac5ed;
+                            font-weight: bold;
+                        }
+                    </style>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-sm-12 col-md-12 col-md-10">
+                        <div class="services-list">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-magic highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">Web Design</div>
+                                            <div class="info">Beauty and function</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-code highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">Development/Coding</div>
+                                            <div class="info">Quality code that lasts</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-pencil highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">Copy Writing</div>
+                                            <div class="info">Words that tell your story</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-bullhorn highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">SEO/PPCM</div>
+                                            <div class="info">Converting users to customers</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-eye highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">Branding/Identity</div>
+                                            <div class="info">Leave a lasting impression</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-md-4">
+                                    <div class="service-block" style="visibility: visible;">
+                                        <div class="ico fa fa-umbrella highlight"></div>
+                                        <div class="text-block">
+                                            <div class="name">Strategy/Planning</div>
+                                            <div class="info">Thinking beyond tomorrow</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -83,13 +83,7 @@ $usuario = $_SESSION['username'];
       </ul>
     </nav>
     <div id="content">
-      <?php
-
-        include("../ropa/images.php");
-
-        include("../ropa/leeimagen_calendario.php");
-
-      ?>
+        <?php  include("acercade.php"); ?>
     </div>
   </div>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
