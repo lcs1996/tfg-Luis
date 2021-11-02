@@ -17,13 +17,8 @@
 
 <body>
     <?php
+    require 'logica/conexion.php';
     if (isset($_POST['registrar'])) {
-
-        $email = $_POST['email'];
-        $clave = $_POST['clave'];
-        $clave2 = $_POST['clave2'];
-        $nombre = $_POST['nombre'];
-        $Id = new mysqli('localhost', 'root', '', 'tfg'); // Abre una conexión
         
         
         if ($clave !== $clave2) {
