@@ -41,9 +41,6 @@
             $error[] = "Necesitas email";
         }
         
-        if (strlen($clave) < 6) {
-            $error[] = "La longitud de la contraseña tiene que ser mayor que 6";
-        }
 
         if (substr_count($usuario, "@") == 0) {
             $error[] = "El email tiene que contener @";
