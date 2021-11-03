@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" name="guardar">Enviar</button>
+                        <button type="submit" class="btn btn-primary" name="guardar">Subir</button>
                         <button type="button" class="btn  cancel" onclick="closeForm()">Cancelar</button>
                     </div>
                 </form>

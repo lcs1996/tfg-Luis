@@ -92,7 +92,7 @@ body {
 }
 
 .blue {
-  background: #6a76f8;
+  background: #EF8D9C;
   color: #fff;
 }
 
@@ -124,7 +124,7 @@ i {
 }
 
 #sidebarCollapse:hover {
-  color: #6a76f8;
+  color: #EF8D9C;
   background: #fff;
   outline: none;
 }
@@ -145,7 +145,7 @@ i {
   min-width: 250px;
   max-width: 250px;
   margin-top: 70px;
-  background: #6a76f8;
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
   color: #fff;
   transition: all 0.3s;
 }
@@ -156,7 +156,7 @@ i {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6a76f8;
+  background: #EF8D9C;
 }
 
 #sidebar ul.components {
@@ -178,14 +178,14 @@ i {
 }
 
 #sidebar ul li a:hover {
-  color: #6a76f8;
+  color: #EF8D9C;
   background: #fff;
   text-decoration: none;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
-  background: #6a76f8;
+  background: #EF8D9C;
 }
 
 a[data-toggle="collapse"] {
@@ -297,7 +297,7 @@ img {
   vertical-align: middle;
 }
 
-.boton {
+.botona {
   color: #ffffff;
   padding: 0.8rem;
   font-size: 14px;
@@ -313,10 +313,31 @@ img {
   text-decoration: none;
 }
 
-.boton:hover {
+.botona:hover {
   background-color: rgba(255, 255, 255, 0.12);
   text-decoration: none;
   color: #ffffff;
+}
+
+.boton {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 10%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #EF8D9C;
+  text-align: center;
+}
+
+.boton:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  background-color: #f7687e;
 }
 
 .cards {
