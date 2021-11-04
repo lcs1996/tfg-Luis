@@ -33,9 +33,8 @@ $usuario = $_SESSION['username'];
 ?>
 
 <body>
-  <div class="container">
-    <div class="row d-flex flex-wrap align-items-center" data-toggle="modal" data-target="#lightbox">
-
+  <div class="main">
+    <ul class="cards">
       <?php
 
       $con = mysqli_connect("localhost", "root", "", "tfg");
@@ -46,53 +45,21 @@ $usuario = $_SESSION['username'];
        and imagenes.id=img_favs.id";
       $res = mysqli_query($con, $query);
       while ($row = mysqli_fetch_assoc($res)) {
-        $tipo = $row['tipo'];
-        $imagen = $row['imagen'];
       ?>
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <!--Content-->
-                <?php
-                $conex = mysqli_connect("localhost", "root", "", "tfg");
-                $consulta = "SELECT * FROM imagenes where email='" . $usuario . "';";
-                $result = mysqli_query($conex, $consulta);
-                while ($fil = mysqli_fetch_assoc($result)) {
-                  $a = $fil['tipo'];
-                  $b = $fil['imagen'];
-                ?>
-                  <div class="modal-content">
-                    <!--Body-->
-                    <div class="modal-body mb-0 p-0">
-                      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                        <img class="embed-responsive-item" src="data:<?php echo $a; ?>;base64,<?php echo  base64_encode($b); ?>"></img>
-                      </div>
-                    </div>
-                    <!--Footer-->
-                    <div class="modal-footer justify-content-center">
-                      <form action="../ropa/add_calendario.php?id=<?php echo $fil['id']; ?>" method="POST">
-                        <label for="cal">Fecha: </label>
-                        <input type="date" id="cal" name="fecha">
-                        <button type="submit" class="btn btn-primary" name="anadir"> Añadir</button>
-                      </form>
-
-                      <a type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
-                      <a type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Añadir favorito</a>
-                      <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                <?php
-                }
-                ?>
-                <!--/.Content-->
-              </div>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></div>
+            <div class="card_content">
+              <a type="button" class="botona card_btn" href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Favorito</a>
+              <a type="button" class="botona card_btn" href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
             </div>
-            <a><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $tipo; ?>;base64,<?php echo  base64_encode($imagen); ?>" data-target="#indicators" data-slide-to="0" alt="" /></a>
           </div>
-  <?php
+        </li>
+      <?php
       }
-  ?>
-  </div>
+      ?>
+    </ul>
+
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
