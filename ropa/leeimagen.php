@@ -31,8 +31,12 @@ $usuario = $_SESSION['username'];
     if (isset($_POST['buscar'])) {
       $con = mysqli_connect("localhost", "root", "", "tfg");
       $ropa = $_POST['ropa'];
+      $tamano=3;
+      $pagina=1;
       $query = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
       $res = mysqli_query($con, $query);
+       // $num_filas=$res->rowCount();
+      //$total=ceil();
       while ($row = mysqli_fetch_assoc($res)) {
     ?>
         <li class="cards_item">
