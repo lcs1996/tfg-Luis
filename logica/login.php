@@ -25,26 +25,18 @@
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
 
-        $q = "SELECT COUNT(*) as contar from usuarios where email='$usuario' and contrasena='$clave'";
+        $q = "SELECT COUNT(*) as contar from usuarios where usuario='$usuario' and contrasena='$clave'";
         $consulta = mysqli_query($conexion, $q);
         $array = mysqli_fetch_array($consulta);
-
-        if (empty($_POST['usuario'])) {
-            $error[] = "Necesitas nombre";
-        }
 
         if (empty($_POST['clave'])) {
             $error[] = "Necesitas contraseña";
         }
 
         if (empty($_POST['usuario'])) {
-            $error[] = "Necesitas email";
+            $error[] = "Necesitas usuario";
         }
         
-
-        if (substr_count($usuario, "@") == 0) {
-            $error[] = "El email tiene que contener @";
-        }
 
     }
     if (isset($_POST['entrar']) && empty($error) && $array['contar'] > 0) {
@@ -59,8 +51,8 @@
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="row g-3">
                             <h4>Bienvenido</h4>
                             <div class="col-12">
-                                <label>Email</label>
-                                <input type="text" name="usuario" class="form-control" placeholder="Email">
+                                <label>Usuario</label>
+                                <input type="text" name="usuario" class="form-control" placeholder="Usuario">
                             </div>
                             <div class="col-12">
                                 <label>Contraseña</label>

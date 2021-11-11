@@ -326,8 +326,8 @@ img {
   text-transform: uppercase;
   border-radius: 4px;
   font-weight: 400;
-  display: block;
-  width: 10%;
+  display: inline-block;
+  width: 100px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #EF8D9C;

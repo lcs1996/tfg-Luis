@@ -44,10 +44,15 @@ $usuario = $_SESSION['username'];
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+          <a class="nav-link" id="link" href="menu_acercade.php">
+            <i class="fas fa-info"></i>
+            Acerca de<span class="sr-only">(current) </span></a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link open-button" onclick="openForm()" id="link" href="#">
-            <i class="fas fa-upload"></i>
-            Subir foto<span class="sr-only">(current) </span></a>
+          <a class="nav-link" id="link" href="ajustes.php">
+            <i class="fas fa-user-cog"></i>
+            Ajustes<span class="sr-only">(current) </span></a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" id="link" href="../logica/salir.php">
@@ -75,10 +80,7 @@ $usuario = $_SESSION['username'];
           <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
         </li>
         <li>
-          <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
-        </li>
-        <li>
-          <a href="menu_acercade.php"><i class="fas fa-info"></i>Acerca de</a>
+          <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
       </ul>
     </nav>

@@ -20,10 +20,10 @@ $usuario = $_SESSION['username'];
       <?php
 
       $con = mysqli_connect("localhost", "root", "", "tfg");
-      $query = "SELECT imagenes.id,imagenes.email,imagenes.nombre,imagenes.categoria,imagenes.imagen,imagenes.tipo,img_favs.id
+      $query = "SELECT imagenes.id,imagenes.usuario,imagenes.nombre,imagenes.categoria,imagenes.imagen,imagenes.tipo,img_favs.id
        FROM imagenes 
        INNER JOIN img_favs
-       where imagenes.email='" . $usuario . "'
+       where imagenes.usuario='" . $usuario . "'
        and imagenes.id=img_favs.id";
       $res = mysqli_query($con, $query);
       while ($row = mysqli_fetch_assoc($res)) {

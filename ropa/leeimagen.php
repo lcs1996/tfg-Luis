@@ -33,7 +33,7 @@ $usuario = $_SESSION['username'];
       $ropa = $_POST['ropa'];
       $tamano=3;
       $pagina=1;
-      $query = "SELECT * FROM imagenes where email='" . $usuario . "' and categoria='" . $ropa . "'";
+      $query = "SELECT * FROM imagenes where usuario='" . $usuario . "' and categoria='" . $ropa . "'";
       $res = mysqli_query($con, $query);
        // $num_filas=$res->rowCount();
       //$total=ceil();
@@ -54,7 +54,7 @@ $usuario = $_SESSION['username'];
       ?>
       <?php
       $con = mysqli_connect("localhost", "root", "", "tfg");
-      $query = "SELECT * FROM imagenes where email='" . $usuario . "';";
+      $query = "SELECT * FROM imagenes where usuario='" . $usuario . "';";
       $res = mysqli_query($con, $query);
       while ($row = mysqli_fetch_assoc($res)) {
       ?>

@@ -3,7 +3,7 @@ require '../logica/conexion.php';
 
 $id = $_REQUEST['id'];
 $usuario = $_SESSION['username'];
-$query = "INSERT INTO img_favs (id,email) values ('" . $id . "','" . $usuario . "')";
+$query = "INSERT INTO img_favs (id) values ('" . $id . "')";
 $resultado = $conexion->query($query);
 
 if ($resultado) {

@@ -16,9 +16,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
-                <?php
-                
-                
+                <?php   
                 if (isset($_REQUEST['guardar'])) {
                     if (isset($_FILES['foto']['name'])) {
                         $ropa=$_POST['ropa'];
@@ -29,7 +27,7 @@
                         $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                         $con = mysqli_connect("localhost", "root", "", "tfg");
                         $binariosImagen = mysqli_escape_string($con, $binariosImagen);
-                        $query = "INSERT INTO imagenes (email,nombre,categoria,imagen,tipo) values ('" . $usuario . "','" . $nombreArchivo . "','" . $ropa . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
+                        $query = "INSERT INTO imagenes (usuario,nombre,categoria,imagen,tipo) values ('" . $usuario . "','" . $nombreArchivo . "','" . $ropa . "','" . $binariosImagen . "','" . $tipoArchivo . "')";
                         $res = mysqli_query($con, $query);
                         if ($res) {
                 ?>
@@ -73,8 +71,8 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" name="guardar">Subir</button>
-                        <button type="button" class="btn  cancel" onclick="closeForm()">Cancelar</button>
+                        <button type="submit" class="boton" name="guardar">Subir</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
                     </div>
                 </form>
                 </div>

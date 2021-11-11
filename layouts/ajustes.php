@@ -36,6 +36,16 @@ $usuario = $_SESSION['username'];
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
+                    <a class="nav-link" id="link" href="menu_acercade.php">
+                        <i class="fas fa-info"></i>
+                        Acerca de<span class="sr-only">(current) </span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id="link" href="ajustes.php">
+                        <i class="fas fa-user-cog"></i>
+                        Ajustes<span class="sr-only">(current) </span></a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" id="link" href="../logica/salir.php">
                         <i class="fas fa-sign-out-alt"></i>
                         Cerrar Sesión<span class="sr-only">(current) </span></a>
@@ -61,10 +71,7 @@ $usuario = $_SESSION['username'];
                     <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
                 </li>
                 <li>
-                    <a href="ajustes.php"><i class="fas fa-user-cog"></i>Ajustes</a>
-                </li>
-                <li>
-                    <a href="acercade.php"><i class="fas fa-info"></i>Acerca de</a>
+                    <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
                 </li>
             </ul>
         </nav>
@@ -160,8 +167,8 @@ $usuario = $_SESSION['username'];
 
     </div>
     <footer>
-    <?php require('footer.php') ?>
-  </footer>
+        <?php require('footer.php') ?>
+    </footer>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -19,9 +19,13 @@
     <?php
     require 'logica/conexion.php';
     if (isset($_POST['registrar'])) {
+        $nombre=$_POST['nombre'];
+        $email=$_POST['email'];
+        $usuario2=$_POST['usuario'];
+        $contra=$_POST['clave'];
+        $clave2=$_POST['clave2'];
         
-        
-        if ($clave !== $clave2) {
+        if ($contra !== $clave2) {
             $error[] = "Las contraseñas tienen que ser iguales";
         }
 
@@ -37,7 +41,7 @@
             $error[] = "Necesitas email";
         }
         
-        if (strlen($clave) < 6) {
+        if (strlen($contra) < 6) {
             $error[] = "La longitud de la contraseña tiene que ser mayor que 6";
         }
 
@@ -46,7 +50,8 @@
         }
     }
     if (isset($_POST['registrar']) && empty($error)) {
-        $result = $Id->query("INSERT into usuarios (nombre,email,contrasena) values (\"" . $nombre . "\", \"" . $email . "\",\"" . $clave . "\")");
+        
+        $result = $conexion->query("INSERT into usuarios (nombre,email,usuario,contrasena) values (\"" . $nombre . "\", \"" . $email . "\",\"" . $usuario2 . "\",\"" . $contra . "\")");
         header("location: index.php");
     } else {
     ?>
@@ -63,6 +68,10 @@
                             <div class="col-12">
                                 <label>Nombre</label>
                                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                            </div>
+                            <div class="col-12">
+                                <label>Nombre usuario</label>
+                                <input type="text" name="usuario" class="form-control" placeholder="Usuario">
                             </div>
                             <div class="col-12">
                                 <label>Contraseña</label>
