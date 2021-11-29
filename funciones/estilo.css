@@ -26,7 +26,7 @@ body {
 .footer-basic {
   padding: 40px 0;
   background-color: #ffffff;
-  color: #4b4c4d;
+  color: #6d6868;
 }
 
 .footer-basic ul {
@@ -92,7 +92,7 @@ body {
 }
 
 .blue {
-  background: #EF8D9C;
+  background: #6d6868;
   color: #fff;
 }
 
@@ -124,7 +124,7 @@ i {
 }
 
 #sidebarCollapse:hover {
-  color: #EF8D9C;
+  color: #5a5959;
   background: #fff;
   outline: none;
 }
@@ -145,7 +145,7 @@ i {
   min-width: 250px;
   max-width: 250px;
   margin-top: 70px;
-  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+  background: linear-gradient(to bottom left, #6d6868 100%, #dbd3ce 40%);
   color: #fff;
   transition: all 0.3s;
 }
@@ -156,7 +156,7 @@ i {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #EF8D9C;
+  background: #6d6868;
 }
 
 #sidebar ul.components {
@@ -178,14 +178,14 @@ i {
 }
 
 #sidebar ul li a:hover {
-  color: #EF8D9C;
+  color: #5a5959;
   background: #fff;
   text-decoration: none;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
-  background: #EF8D9C;
+  background: #5a5959;
 }
 
 a[data-toggle="collapse"] {
@@ -330,14 +330,14 @@ img {
   width: 100px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #EF8D9C;
+  background: #5a5959;
   text-align: center;
 }
 
 .boton:hover {
   background-color: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  background-color: #f7687e;
+  background-color: #5a5959;
 }
 
 .cards {
@@ -376,7 +376,7 @@ img {
 
 .card_content {
   padding: 1rem;
-  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+  background: linear-gradient(to bottom left, #6d6868 40%, #dbd3ce 100%);
 }
 
 .card_title {
@@ -401,4 +401,8 @@ img {
   font-size: 13px;
   margin-top: 35px;
   text-align: center;
+}
+
+.buscar{
+  margin: 30px;
 }

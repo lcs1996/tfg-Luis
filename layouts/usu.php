@@ -44,17 +44,13 @@ $usuario = $_SESSION['username'];
             <button type="submit" class="btn btn-secondary mb-2" name="enviar"><i class="fas fa-paper-plane"></i></button>
         </form>
     </div>
-    
-    
- 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse btn navbar-btn" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item active">
+      <li class="nav-item active">
           <a class="nav-link" id="link" href="menu_acercade.php">
             <i class="fas fa-info"></i>
             Acerca de<span class="sr-only">(current) </span></a>
@@ -64,7 +60,6 @@ $usuario = $_SESSION['username'];
             <i class="fas fa-user-cog"></i>
             Ajustes<span class="sr-only">(current) </span></a>
         </li>
-
         <li class="nav-item active">
           <a class="nav-link" id="link" href="../logica/salir.php">
             <i class="fas fa-sign-out-alt"></i>
@@ -97,14 +92,14 @@ $usuario = $_SESSION['username'];
     </nav>
     <div id="content">
       <?php
-
-      include("../contenido.php");
+        
 
       ?>
-
     </div>
   </div>
-  </div>
+  <footer>
+    <?php require('footer.php') ?>
+  </footer>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

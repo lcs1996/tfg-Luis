@@ -105,7 +105,7 @@ $usuario = $_SESSION['username'];
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" name="cambiar"> Realizar cambios</button>
+                                    <button type="submit" class="boton" name="cambiar"> cambiar</button>
                                 </div>
                             </form>
                             <?php
