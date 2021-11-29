@@ -38,3 +38,11 @@ CREATE TABLE `img_cal` (
   `fecha` date,
   PRIMARY KEY (`id`)
 );
+
+
+CREATE TABLE `amigos` ( `id_amigo` INT(11) NOT NULL AUTO_INCREMENT ,
+ `de` INT(11) NOT NULL , 
+ `para` INT(11) NOT NULL ,
+ `fecha` DATETIME NOT NULL ,
+ `estado` INT(11) NOT NULL , 
+ PRIMARY KEY (`id_amigo`)) ENGINE = InnoDB;

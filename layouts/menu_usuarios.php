@@ -35,7 +35,7 @@ $usuario = $_SESSION['username'];
     <button id="sidebarCollapse" class="btn navbar-btn">
       <i class="fas fa-lg fa-bars"></i>
     </button>
-    <div class="navbar-brand" href="#">
+    <div class="navbar-brand">
       <form class="form-inline" action="menu_usuarios.php" method="POST">
             <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
             <div class="input-group mb-2 mr-sm-2">
