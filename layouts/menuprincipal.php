@@ -21,6 +21,14 @@
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
     }
+
+    function openForm2() {
+      document.getElementById("myForm2").style.display = "block";
+    }
+
+    function closeForm2() {
+      document.getElementById("myForm2").style.display = "none";
+    }
   </script>
   <title></title>
 </head>
@@ -35,7 +43,7 @@ $usuario = $_SESSION['username'];
     <button id="sidebarCollapse" class="btn navbar-btn">
       <i class="fas fa-lg fa-bars"></i>
     </button>
-    <div class="navbar-brand">
+    <div class="navbar-brand ">
       <form class="form-inline" action="menu_usuarios.php" method="POST">
             <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
             <div class="input-group mb-2 mr-sm-2">
@@ -45,8 +53,6 @@ $usuario = $_SESSION['username'];
         </form>
     </div>
     
-    
- 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -92,6 +98,9 @@ $usuario = $_SESSION['username'];
         </li>
         <li>
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
+        </li>
+        <li>
+          <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
         </li>
       </ul>
     </nav>

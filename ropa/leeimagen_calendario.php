@@ -25,7 +25,7 @@ $usuario = $_SESSION['username'];
             <input type="date" id="cal" name="fecha">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" name="buscar"> Buscar</button>
+            <button type="submit" class="boton" name="buscar"> Buscar</button>
         </div>
     </form>
     <hr>
