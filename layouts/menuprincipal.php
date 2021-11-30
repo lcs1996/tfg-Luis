@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script src="../funciones/icons.js"></script>
   <script>
@@ -100,7 +102,7 @@ $usuario = $_SESSION['username'];
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
         <li>
-          <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+          <a data-toggle="modal" data-target="#myModal" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
         </li>
       </ul>
     </nav>

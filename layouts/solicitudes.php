@@ -10,93 +10,37 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
-
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
-                <?php
-                if (isset($_REQUEST['aceptar'])) {
-                    $con = mysqli_connect("localhost", "root", "", "tfg");
-                    $query = "UPDATE amigos SET estado=1";
-                    $res = mysqli_query($con, $query);
-                    if ($res) {
-                ?>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                            Solicitud aceptada
-                        </div>
-                    <?php
-                    } else {
-                    ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                            Error <?php echo mysqli_error($con); ?>
-                        </div>
-                    <?php
-
-                    }
-                }
-                if (isset($_REQUEST['rechazar'])) {
-                    $con = mysqli_connect("localhost", "root", "", "tfg");
-                    $query = "DELETE FROM amigos where ";
-                    $res = mysqli_query($con, $query);
-                    if ($res) {
-                ?>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                            Solicitud rechazada
-                        </div>
-                    <?php
-                    } else {
-                    ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                            Error <?php echo mysqli_error($con); ?>
-                        </div>
-                    <?php
-
-                    }
-                }
+                <?php  
                 $conexion = mysqli_connect("localhost", "root", "", "tfg");
                 $cons = "SELECT id FROM usuarios where usuario= '" . $usuario . "'";
                 $res = $conexion->query($cons);
                 while ($a = mysqli_fetch_assoc($res)) {
                     $query = "SELECT * FROM amigos WHERE para='" . $a['id'] . "'";
-
+                    $result = $conexion->query($query);
+                    while ($b = mysqli_fetch_assoc($result)) {
                     ?>
-                    <div class="form-popup" id="myForm2">
-                        
+                    <div class="form-popup" id="myForm2">   
                             <div class="form-group">
                                 <?php
-                                echo $a['de'];
+                                echo $b['de'];
                                 ?>
                             </div>
                             <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <button type="submit" class="boton" name="aceptar">Aceptar</button>
-                                <button type="submit" class="boton" name="rechazar">Rechazar</button>
+                                <a type="button" class="boton" name="aceptar" href="../layouts/aceptar_amistad.php?para=<?php echo $b['para']; ?>">Aceptar</a>
+                                <a type="button" class="boton" name="rechazar" href="../layouts/rechazar_amistad.php?para=<?php echo $b['para']; ?>">Rechazar</a>
                                 <button type="button" class="btn cancel" onclick="closeForm2()">Cerrar</button>
                             </div>
                         </form>
                     </div>
                 <?php
+                    }
                 }
                 ?>
-
             </div>
         </div>
     </div>

@@ -4,10 +4,11 @@ $usuario = $_SESSION['username'];
 
 if (isset($_POST['enviar'])) {
     $u = $_POST['usuario'];
-    $query = "SELECT id,usuario FROM usuarios where usuario LIKE '%" . $u . "%' EXCEPT 
-    SELECT id,usuario FROM usuarios WHERE usuario='". $usuario."'";
-    $resultado = $conexion->query($query);
-    while ($row = mysqli_fetch_assoc($resultado)) {
+    $sql = "SELECT id,usuario
+    FROM usuarios 
+    where usuario LIKE '%" . $u . "%' and usuario!='". $usuario."'";
+    $resultado = $conexion->query($sql);
+    while ($row = mysqli_fetch_array($resultado)) {
 ?>
         <div class="container">
             <div class="row">
@@ -16,24 +17,8 @@ if (isset($_POST['enviar'])) {
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <?php
                             echo $row['usuario'];
-                            $amigos = ("SELECT * FROM amigos");
-                            $r=$conexion->query($amigos);
-                            //while ($fila = mysqli_fetch_assoc($r)) {
-                              //  if ($fila['estado'] == 1) {
                             ?>
-                                    <!-- <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Dejar de seguir</a> -->
-                                <?php
-                                //} elseif($fila['estado'] == 0) {
-                                ?>
-                                    <!-- <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Esperando respuesta</a> -->
-                                <?php
-                               // }else {
-                                    ?>
-                                    <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Solicitud de amistad</a>
-                                <?php
-                                //}
-
-                                ?>
+                                    <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Solicitar amistad</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +28,10 @@ if (isset($_POST['enviar'])) {
                            // }
                         }
                     } else {
-                        $query = "SELECT id,usuario FROM usuarios";
+                        $usuario = $_SESSION['username'];
+                        
+                        $query = "SELECT id,usuario FROM usuarios EXCEPT 
+                        SELECT id,usuario FROM usuarios WHERE usuario='". $usuario."'";
                         $resultado = $conexion->query($query);
                         while ($row = mysqli_fetch_assoc($resultado)) {
     ?>
