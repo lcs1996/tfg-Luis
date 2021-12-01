@@ -16,10 +16,10 @@
             <div class="col-12">
                 <?php  
                 $conexion = mysqli_connect("localhost", "root", "", "tfg");
-                $cons = "SELECT id FROM usuarios where usuario= '" . $usuario . "'";
+                $cons = "SELECT * FROM usuarios where usuario= '" . $usuario . "'";
                 $res = $conexion->query($cons);
                 while ($a = mysqli_fetch_assoc($res)) {
-                    $query = "SELECT * FROM amigos WHERE para='" . $a['id'] . "'";
+                    $query = "SELECT * FROM amigos WHERE para='" . $a['usuario'] . "'";
                     $result = $conexion->query($query);
                     while ($b = mysqli_fetch_assoc($result)) {
                     ?>

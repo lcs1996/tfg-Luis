@@ -51,7 +51,7 @@
     }
     if (isset($_POST['registrar']) && empty($error)) {
         
-        $result = $conexion->query("INSERT into usuarios (nombre,email,usuario,contrasena) values (\"" . $nombre . "\", \"" . $email . "\",\"" . $usuario2 . "\",\"" . $contra . "\")");
+        $result = $conexion->query("INSERT into usuarios (nombre,email,usuario,contrasena,privada) values (\"" . $nombre . "\", \"" . $email . "\",\"" . $usuario2 . "\",\"" . $contra . "\",0)");
         header("location: index.php");
     } else {
     ?>

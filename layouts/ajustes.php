@@ -26,9 +26,15 @@ $usuario = $_SESSION['username'];
         <button id="sidebarCollapse" class="btn navbar-btn">
             <i class="fas fa-lg fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="../index.php">
-            <h3 id="logo">Menu</h3>
-        </a>
+        <div class="navbar-brand ">
+            <form class="form-inline" action="menu_usuarios.php" method="POST">
+                <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario" placeholder="Buscar amigos...">
+                </div>
+                <button type="submit" class="btn btn-secondary mb-2" name="enviar"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,9 +79,16 @@ $usuario = $_SESSION['username'];
                 <li>
                     <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
                 </li>
+                <li>
+                    <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+                </li>
             </ul>
         </nav>
         <div id="content">
+            <?php
+
+
+            ?>
             <div id="accordion">
 
                 <div class="card">
@@ -119,27 +132,17 @@ $usuario = $_SESSION['username'];
                                     $nueva = $_POST['nueva'];
 
                                     $query = "UPDATE usuarios set contrasena='$nueva' 
-                where email='$usuario' and contrasena='$antigua'";
+                where usuario='$usuario' and contrasena='$antigua'";
                                     $resultado = mysqli_query($conexion, $query);
-
                                     if ($resultado) {
+
                             ?>
                                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                                 <span class="sr-only">Close</span>
                                             </button>
-                                            Contraseña cambiada correctamente
-                                        </div>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                <span class="sr-only">Close</span>
-                                            </button>
-                                            Error
+                                            Contraseña cambiada!
                                         </div>
                             <?php
                                     }
@@ -153,12 +156,89 @@ $usuario = $_SESSION['username'];
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                            Collapsible Group Item #2
+                            Perfil Privado/publico
                         </a>
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                         <div class="card-body">
-                            Lorem ipsum..
+                            <?php
+                            $usuario = $_SESSION['username'];
+                            $query = "SELECT privada FROM usuarios WHERE usuario='$usuario'";
+                            $resultado = $conexion->query($query);
+                            while ($row = mysqli_fetch_assoc($resultado)) {
+                                if ($row['privada'] == 0) {
+                            ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class='float-left'>
+                                                <h6>Perfil publico</h6>
+                                            </div>
+
+                                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                                <div class="float-right">
+                                                    <button type="submit" class="boton" name="cambiar2">Cambiar a
+                                                        privado</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if (isset($_REQUEST['cambiar2'])) {
+                                        $usuario = $_SESSION['username'];
+                                        $query = "UPDATE usuarios set privada=1 
+                                    where usuario='$usuario'";
+                                        $res = mysqli_query($conexion, $query);
+                                        if ($res) {
+
+                                    ?>
+                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                El perfil ha pasado a ser privado
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+                                } elseif ($row['privada'] == 1) {
+                                    ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class='float-left'>
+                                                <h6>Perfil privado</h6>
+                                            </div>
+
+                                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                                <div class="float-right">
+                                                    <button type="submit" class="boton" name="cambiar2">Cambiar a
+                                                        publico</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if (isset($_REQUEST['cambiar2'])) {
+                                        $usuario = $_SESSION['username'];
+                                        $query = "UPDATE usuarios set privada=0 
+                                    where usuario='$usuario'";
+                                        $res = mysqli_query($conexion, $query);
+                                        if ($res) {
+
+                                    ?>
+                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                El perfil ha pasado a ser publico
+                                            </div>
+                            <?php
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -170,9 +250,12 @@ $usuario = $_SESSION['username'];
         <?php require('footer.php') ?>
     </footer>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
     <script src="../funciones/script.js"></script>
 
 </body>

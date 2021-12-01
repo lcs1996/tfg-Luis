@@ -11,12 +11,14 @@ grant all privileges on tfg.* to 'luis'@'localhost';
 drop table if exists usuarios;
 drop table if exists imagenes;
 
-CREATE TABLE `usuarios` ( `id` INT NOT NULL AUTO_INCREMENT , 
-`nombre` VARCHAR(30) NOT NULL , 
-`usuario` VARCHAR(30) NOT NULL , 
-`email` VARCHAR(100) NOT NULL , 
-`contrasena` VARCHAR(30) NOT NULL , 
-PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `usuarios` ( 
+  `id` INT(11) NOT NULL AUTO_INCREMENT , 
+  `nombre` VARCHAR(30) NOT NULL , 
+  `usuario` VARCHAR(30) NOT NULL , 
+  `email` VARCHAR(100) NOT NULL , 
+  `contrasena` VARCHAR(30) NOT NULL , 
+  `privada` INT(11) NOT NULL , 
+  PRIMARY KEY (`id`)); ENGINE = InnoDB;
 
 CREATE TABLE `imagenes` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -40,9 +42,10 @@ CREATE TABLE `img_cal` (
 );
 
 
-CREATE TABLE `amigos` ( `id_amigo` INT(11) NOT NULL AUTO_INCREMENT ,
- `de` INT(11) NOT NULL , 
- `para` INT(11) NOT NULL ,
- `fecha` DATETIME NOT NULL ,
- `estado` INT(11) NOT NULL , 
- PRIMARY KEY (`id_amigo`)) ENGINE = InnoDB;
+CREATE TABLE `amigos` ( 
+  `id_amigo` INT NOT NULL AUTO_INCREMENT , 
+  `de` VARCHAR(30) NOT NULL , 
+  `para` VARCHAR(30) NOT NULL , 
+  `fecha` DATETIME NOT NULL , 
+  `estado` INT(11) NOT NULL , 
+  PRIMARY KEY (`id_amigo`)); ENGINE = InnoDB;

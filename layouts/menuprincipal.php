@@ -102,7 +102,7 @@ $usuario = $_SESSION['username'];
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
         <li>
-          <a data-toggle="modal" data-target="#myModal" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+          <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
         </li>
       </ul>
     </nav>

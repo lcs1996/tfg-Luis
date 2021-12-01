@@ -35,8 +35,6 @@ $usuario = $_SESSION['username'];
       $pagina=1;
       $query = "SELECT * FROM imagenes where usuario='" . $usuario . "' and categoria='" . $ropa . "'";
       $res = mysqli_query($con, $query);
-       // $num_filas=$res->rowCount();
-      //$total=ceil();
       while ($row = mysqli_fetch_assoc($res)) {
     ?>
         <li class="cards_item">

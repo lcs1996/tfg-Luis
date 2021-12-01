@@ -4,7 +4,7 @@ $usuario = $_SESSION['username'];
 
 if (isset($_POST['enviar'])) {
     $u = $_POST['usuario'];
-    $sql = "SELECT id,usuario
+    $sql = "SELECT *
     FROM usuarios 
     where usuario LIKE '%" . $u . "%' and usuario!='". $usuario."'";
     $resultado = $conexion->query($sql);
@@ -18,20 +18,20 @@ if (isset($_POST['enviar'])) {
                             <?php
                             echo $row['usuario'];
                             ?>
-                                    <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Solicitar amistad</a>
+                                    <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton">Ver perfil</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     <?php
-                           // }
                         }
                     } else {
                         $usuario = $_SESSION['username'];
                         
-                        $query = "SELECT id,usuario FROM usuarios EXCEPT 
-                        SELECT id,usuario FROM usuarios WHERE usuario='". $usuario."'";
+                        $query = "SELECT *
+                        FROM usuarios 
+                        where usuario!='". $usuario."'";
                         $resultado = $conexion->query($query);
                         while ($row = mysqli_fetch_assoc($resultado)) {
     ?>
@@ -43,7 +43,7 @@ if (isset($_POST['enviar'])) {
                         <?php
                             echo $row['usuario'];
                         ?>
-                        <a href="../layouts/usu.php?id=<?php echo $row['id']; ?>" class="boton">Solicitud de amistad</a>
+                        <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton">Ver perfil</a>
                     </div>
                 </div>
             </div>
