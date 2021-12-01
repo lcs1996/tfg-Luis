@@ -21,6 +21,15 @@
         function closeForm() {
             document.getElementById("myForm").style.display = "none";
         }
+
+        function openForm2() {
+            document.getElementById("myForm2").style.display = "block";
+        }
+
+        function closeForm2() {
+            document.getElementById("myForm2").style.display = "none";
+        }
+        location.reload( forceGet );
     </script>
     <title></title>
 </head>
@@ -96,7 +105,7 @@ $usuario = $_SESSION['username'];
         <div id="content">
             <?php
             $usu = $_REQUEST['usuario'];
-            $priv = $_REQUEST['privada'];
+            
             ?>
             <div class="row">
                 <div class="col">
@@ -106,7 +115,7 @@ $usuario = $_SESSION['username'];
                     <h3><?php echo $usu; ?></h3>
                     <span class="float-right">
 
-                        <a class="boton" href="#">
+                        <a class="boton" href="usu.php?usuario=<?php echo $usu; ?>" onclick="location.reload()">
                             Seguir
                         </a>
                     </span>
@@ -114,29 +123,35 @@ $usuario = $_SESSION['username'];
                 </div>
             </div>
             <hr>
-            <?php
-            if ($priv==0) {
-            $con = mysqli_connect("localhost", "root", "", "tfg");
-            $query = "SELECT * FROM imagenes where usuario='" . $usu . "';";
-            $res = mysqli_query($con, $query);
-            while ($row = mysqli_fetch_assoc($res)) {
-            ?>
-                <li class="cards_item">
-                    <div class="card">
-                        <div class="card_image"><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></div>
-                        <div class="card_content">
-                            <a type="button" class="botona card_btn" href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Me gusta</a>
-                        </div>
-                    </div>
-                </li>
-            <?php
-            }
-        }elseif ($priv==1) {
-            echo "<h2>Este perfil es privado</h2>";
-        }
-            ?>
+            <div class="main">
+                <ul class="cards">
+                    <?php
+                    $priv = $_REQUEST['privada'];
+                    if ($priv == 0) {
+                        $con = mysqli_connect("localhost", "root", "", "tfg");
+                        $query = "SELECT * FROM imagenes where usuario='" . $usu . "';";
+                        $res = mysqli_query($con, $query);
+                        while ($row = mysqli_fetch_assoc($res)) {
+                    ?>
+                            <li class="cards_item">
+                                <div class="card">
+                                    <div class="card_image"><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></div>
+                                    <div class="card_content">
+                                        <a type="button" class="botona card_btn" href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Me gusta</a>
+                                    </div>
+                                </div>
+                            </li>
+                    <?php
+                        }
+                    } elseif ($priv == 1) {
+                        echo "<h2>Este perfil es privado</h2>";
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
     </div>
+
     <footer>
         <?php require('footer.php') ?>
     </footer>
