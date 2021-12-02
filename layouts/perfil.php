@@ -22,22 +22,20 @@
             document.getElementById("myForm").style.display = "none";
         }
 
-        function openForm2() {
-            document.getElementById("myForm2").style.display = "block";
-        }
-
-        function closeForm2() {
-            document.getElementById("myForm2").style.display = "none";
-        }
-        location.reload( forceGet );
     </script>
-    <title></title>
+    <?php
+    session_start();
+    $usuario = $_SESSION['username'];
+    $conexion = mysqli_connect("localhost", "root", "", "tfg");
+    $u=$_REQUEST['usuario'];
+    $infouser = mysqli_query($conexion,"SELECT * FROM usuarios WHERE usuario = '".$u."'");
+    $use = mysqli_fetch_array($infouser);
+  
+    $amigos = mysqli_query($conexion,"SELECT * FROM amigos WHERE de = '".$u."' AND para = '".$usuario."' OR de = '".$usuario."' AND para = '".$u."'");
+    $ami = mysqli_fetch_array($amigos);
+    ?>
+    <title>Perfil</title>
 </head>
-<?php
-session_start();
-$usuario = $_SESSION['username'];
-?>
-
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
@@ -98,28 +96,54 @@ $usuario = $_SESSION['username'];
                     <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
                 </li>
                 <li>
-                    <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+                    <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
                 </li>
             </ul>
         </nav>
         <div id="content">
-            <?php
-            $usu = $_REQUEST['usuario'];
-            
-            ?>
             <div class="row">
                 <div class="col">
                     <span class="float-left">
                         <img src="https://www.marinasmediterraneo.com/marinaseste/wp-content/uploads/sites/4/2018/09/generic-user-purple-4.png" class="img-circle">
                     </span>
-                    <h3><?php echo $usu; ?></h3>
-                    <span class="float-right">
 
-                        <a class="boton" href="usu.php?usuario=<?php echo $usu; ?>" onclick="location.reload()">
-                            Seguir
-                        </a>
-                    </span>
+                    <?php if($usuario != $u) {?>
+              <form action="" method="post">
+              
+              <?php if(mysqli_num_rows($amigos) >= 1 AND $ami['estado'] == 0) { ?>
+              <h4>Esperando respuesta</h4>
+              <?php } else { ?>
 
+              <?php if($use['privada'] == 1 AND $ami['estado'] == 0) { ?>
+              <input type="submit" class="btn btn-primary btn-block" name="seguir" value="Enviar solicitud de amistad">
+              <?php } ?>
+              <?php if($use['privada'] == 1 AND $ami['estado'] == 1) { ?>
+              <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
+              <?php } ?>
+              <?php if($use['privada'] == 0 AND $ami['estado'] == 1) { ?>
+              <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
+              <?php } ?>
+
+
+              <?php } ?>
+              </form>
+              <?php } ?>
+
+              <?php
+              if(isset($_POST['seguir'])) {
+                $add = mysqli_query($conexion,"INSERT INTO amigos (de,para,fecha,estado) values ('".$usuario."','$u',now(),'0')");
+                if($add) {echo '<script>window.location="perfil.php?usuario='.$u.'"</script>';}
+              }
+              ?>
+
+              <?php
+              if(isset($_POST['dejarseguir'])) {
+                $add = mysqli_query($conexion,"DELETE FROM amigos WHERE de = '$u' AND para = '".$usuario."' OR de = '".$usuario."' AND para = '$u'");
+                if($add) {echo '<script>window.location="perfil.php?usuario='.$u.'"</script>';}
+              }
+              ?>
+                  
+                   
                 </div>
             </div>
             <hr>
@@ -127,6 +151,7 @@ $usuario = $_SESSION['username'];
                 <ul class="cards">
                     <?php
                     $priv = $_REQUEST['privada'];
+                    $usu=$_REQUEST['usuario'];
                     if ($priv == 0) {
                         $con = mysqli_connect("localhost", "root", "", "tfg");
                         $query = "SELECT * FROM imagenes where usuario='" . $usu . "';";
@@ -167,3 +192,12 @@ $usuario = $_SESSION['username'];
 </body>
 
 </html>
+<?php
+                   /*  $usu = $_REQUEST['usuario'];
+                    ?>
+                    <h3><?php echo $usu; ?></h3>
+                    <span class="float-right">
+                        <a class="boton" href="usu.php?usuario=<?php echo $usu; ?>">
+                            Seguir
+                        </a>
+                    </span> */

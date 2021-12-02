@@ -297,6 +297,8 @@ img {
   vertical-align: middle;
 }
 
+/** Botones **/
+
 .botona {
   color: #ffffff;
   padding: 0.8rem;
@@ -332,13 +334,60 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #5a5959;
   text-align: center;
+  text-decoration: none;
+}
+
+.botonaceptar {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: inline-block;
+  width: 100px;
+  background: #66eb5a;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+}
+.botonrechazar {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: inline-block;
+  width: 100px;
+  background: #f04949;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.botonaceptar:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  background-color: #a4ee9d;
+  text-decoration: none;
+}
+
+.botonrechazar:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  background-color: #f08181;
+  text-decoration: none;
 }
 
 .boton:hover {
   background-color: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  background-color: #5a5959;
+  background-color: #747474;
+  text-decoration: none;
 }
+
+/** Cards **/
 
 .cards {
   display: flex;
@@ -407,4 +456,4 @@ img {
   margin: 30px;
 }
 
-/** **/
+

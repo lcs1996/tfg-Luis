@@ -2,8 +2,9 @@
 require '../logica/conexion.php';
 
     $para = $_REQUEST['para'];
+    $idamigo=$_REQUEST['id_amigo'];
     $con = mysqli_connect("localhost", "root", "", "tfg");
-    $query = "UPDATE amigos SET estado=1 where para='" . $para . "'";
+    $query = "UPDATE amigos SET estado=1 where para='" . $para . "' and id_amigo='" . $idamigo . "'";
     $res = mysqli_query($con, $query);
     if ($res) {
         header("Location: ../index.php");

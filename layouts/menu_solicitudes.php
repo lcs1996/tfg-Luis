@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="../funciones/estilo.css" rel="stylesheet" type="text/css">
+    <!-- FONTAWESOME : https://kit.fontawesome.com/a23e6feb03.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../funciones/icons.js"></script>
+    <script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    function openForm2() {
+        document.getElementById("myForm2").style.display = "block";
+    }
+
+    function closeForm2() {
+        document.getElementById("myForm2").style.display = "none";
+    }
+    </script>
+    <title></title>
+</head>
+<?php
+
+session_start();
+$usu = $_SESSION['username'];
+
+?>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
+        <button id="sidebarCollapse" class="btn navbar-btn">
+            <i class="fas fa-lg fa-bars"></i>
+        </button>
+        <div class="navbar-brand ">
+            <form class="form-inline" action="menu_usuarios.php" method="POST">
+                <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario"
+                        placeholder="Buscar amigos...">
+                </div>
+                <button type="submit" class="btn btn-secondary mb-2" name="enviar"><i
+                        class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse btn navbar-btn" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" id="link" href="menu_acercade.php">
+                        <i class="fas fa-info"></i>
+                        Acerca de<span class="sr-only">(current) </span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id="link" href="ajustes.php">
+                        <i class="fas fa-user-cog"></i>
+                        Ajustes<span class="sr-only">(current) </span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" id="link" href="../logica/salir.php">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión<span class="sr-only">(current) </span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="wrapper fixed-left">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h7><i class="fas fa-user"></i><?php echo "$usu" ?></h7>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="../index.php"><i class="fas fa-home"></i>Inicio</a>
+                </li>
+                <li>
+                    <a href="menu_favs.php"><i class="fas fa-star"></i>Favoritos</a>
+                </li>
+                <li>
+                    <a href="menu_calendario.php"><i class="fas fa-calendar"></i>Calendario</a>
+                </li>
+                <li>
+                    <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
+                </li>
+                <li>
+                    <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+
+            <?php
+            require '../logica/conexion.php';
+            $cons = "SELECT * FROM usuarios where usuario= '" . $usu . "'";
+            $res = $conexion->query($cons);
+            while ($a = mysqli_fetch_assoc($res)) {
+                $query = "SELECT * FROM amigos WHERE para='" . $a['usuario'] . "' and estado=0";
+                $result = $conexion->query($query);
+                while ($b = mysqli_fetch_assoc($result)) {
+            ?>
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <?php
+                                $q = "SELECT privada FROM usuarios WHERE usuario='" . $b['de'] . "'";
+                                $r = $conexion->query($q);
+                                while ($c = mysqli_fetch_assoc($r)) {
+                                ?>
+                        <a
+                            href="../layouts/perfil.php?usuario=<?php echo $b['de']; ?>&privada=<?php echo $c['privada']; ?>">
+                            <strong>
+                                <?php
+                                            echo $b['de'];
+                                            ?>
+                            </strong>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <form method="post" enctype="multipart/form-data">
+                            <a type="button" class="botonrechazar float-right" name="rechazar"
+                                href="../layouts/rechazar_amistad.php?para=<?php echo $b['para']; ?>&id_amigo=<?php echo $b['id_amigo']; ?>">Rechazar</a>
+                            <a type="button" class="botonaceptar float-right" name="aceptar"
+                                href="../layouts/aceptar_amistad.php?para=<?php echo $b['para']; ?>&id_amigo=<?php echo $b['id_amigo']; ?>">Aceptar</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <?php
+                                }
+                            }
+                        }
+        ?>
+
+
+        </div>
+    </div>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="../funciones/script.js"></script>
+
+</body>
+
+</html>

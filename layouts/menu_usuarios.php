@@ -89,7 +89,7 @@ $usuario = $_SESSION['username'];
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
         <li>
-          <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
+          <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
         </li>
       </ul>
     </nav>
