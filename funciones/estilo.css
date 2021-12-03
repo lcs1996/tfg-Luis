@@ -26,7 +26,7 @@ body {
 .footer-basic {
   padding: 40px 0;
   background-color: #ffffff;
-  color: #6d6868;
+  color: #4b4c4d;
 }
 
 .footer-basic ul {
@@ -92,7 +92,7 @@ body {
 }
 
 .blue {
-  background: #6d6868;
+  background: #EF8D9C;
   color: #fff;
 }
 
@@ -124,7 +124,7 @@ i {
 }
 
 #sidebarCollapse:hover {
-  color: #5a5959;
+  color: #EF8D9C;
   background: #fff;
   outline: none;
 }
@@ -145,7 +145,7 @@ i {
   min-width: 250px;
   max-width: 250px;
   margin-top: 70px;
-  background: linear-gradient(to bottom left, #6d6868 100%, #dbd3ce 40%);
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
   color: #fff;
   transition: all 0.3s;
 }
@@ -156,7 +156,7 @@ i {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d6868;
+  background: #EF8D9C;
 }
 
 #sidebar ul.components {
@@ -178,14 +178,14 @@ i {
 }
 
 #sidebar ul li a:hover {
-  color: #5a5959;
+  color: #EF8D9C;
   background: #fff;
   text-decoration: none;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
-  background: #5a5959;
+  background: #EF8D9C;
 }
 
 a[data-toggle="collapse"] {
@@ -387,7 +387,6 @@ img {
   text-decoration: none;
 }
 
-/** Cards **/
 
 .cards {
   display: flex;
@@ -425,7 +424,7 @@ img {
 
 .card_content {
   padding: 1rem;
-  background: linear-gradient(to bottom left, #6d6868 40%, #dbd3ce 100%);
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
 }
 
 .card_title {
@@ -451,9 +450,3 @@ img {
   margin-top: 35px;
   text-align: center;
 }
-
-.buscar{
-  margin: 30px;
-}
-
-
