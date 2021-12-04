@@ -18,7 +18,7 @@ if (isset($_POST['enviar'])) {
                             <?php
                             echo $row['usuario'];
                             ?>
-                                    <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton">Ver perfil</a>
+                                    <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton2 mb-2"><i class="fas fa-search"></i></a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ if (isset($_POST['enviar'])) {
                         <?php
                             echo $row['usuario'];
                         ?>
-                        <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton">Ver perfil</a>
+                        <a href="../layouts/perfil.php?usuario=<?php echo $row['usuario']; ?>&privada=<?php echo $row['privada']; ?>" class="boton2 mb-2"><i class="fas fa-search"></i></a>
                     </div>
                 </div>
             </div>

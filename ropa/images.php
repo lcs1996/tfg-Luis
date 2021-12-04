@@ -71,8 +71,8 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="boton" name="guardar">Subir</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
+                        <button type="submit" class="boton" name="guardar"><strong>Subir</strong></button>
+                        <button type="button" class="btn cancel" onclick="closeForm()"><strong>Cancelar</strong></button>
                     </div>
                 </form>
                 </div>

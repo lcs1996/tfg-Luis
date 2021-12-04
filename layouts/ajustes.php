@@ -23,16 +23,16 @@ $usuario = $_SESSION['username'];
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
-        <button id="sidebarCollapse" class="btn navbar-btn">
+        <button id="sidebarCollapse" class="boton3 mb-2 mr-sm-2">
             <i class="fas fa-lg fa-bars"></i>
         </button>
-        <div class="navbar-brand ">
+        <div class="navbar-brand">
             <form class="form-inline" action="menu_usuarios.php" method="POST">
                 <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario" placeholder="Buscar amigos...">
                 </div>
-                <button type="submit" class="btn btn-secondary mb-2" name="enviar"><i class="fas fa-paper-plane"></i></button>
+                <button type="submit" class="boton3 mb-2" name="enviar"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,15 +85,11 @@ $usuario = $_SESSION['username'];
             </ul>
         </nav>
         <div id="content">
-            <?php
-
-
-            ?>
             <div id="accordion">
 
                 <div class="card">
                     <div class="card-header">
-                        <a class="card-link " data-toggle="collapse" href="#collapseOne">
+                        <a class="card2 " data-toggle="collapse" href="#collapseOne">
                             Privacidad y seguridad
                         </a>
                     </div>
@@ -118,7 +114,7 @@ $usuario = $_SESSION['username'];
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="boton" name="cambiar"> cambiar</button>
+                                    <button type="submit" class="boton2 mb-2" name="cambiar"> <i class="fas fa-arrow-right"></i></button>
                                 </div>
                             </form>
                             <?php
@@ -171,14 +167,14 @@ $usuario = $_SESSION['username'];
                                     <div class="row">
                                         <div class="col">
                                             <div class='float-left'>
-                                                <h6>Perfil publico</h6>
+                                                <h6>Este perfil es publico</h6>
+                                                <h8>¿Quieres cambiarlo?</h8>
                                             </div>
-
+                                            <br><br><br>
                                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                                <div class="float-right">
-                                                    <button type="submit" class="boton" name="cambiar2">Cambiar a
-                                                        privado</button>
-                                                </div>
+
+                                                <button type="submit" class="boton2 mb-2" name="cambiar2"><i class="fas fa-arrow-right"></i></button>
+
                                             </form>
                                         </div>
                                     </div>
@@ -189,16 +185,8 @@ $usuario = $_SESSION['username'];
                                     where usuario='$usuario'";
                                         $res = mysqli_query($conexion, $query);
                                         if ($res) {
-
-                                    ?>
-                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    <span class="sr-only">Close</span>
-                                                </button>
-                                                El perfil ha pasado a ser privado
-                                            </div>
-                                    <?php
+                                            echo '<script>window.location="ajustes.php"</script>';
+                                    
                                         }
                                     }
                                 } elseif ($row['privada'] == 1) {
@@ -206,14 +194,14 @@ $usuario = $_SESSION['username'];
                                     <div class="row">
                                         <div class="col">
                                             <div class='float-left'>
-                                                <h6>Perfil privado</h6>
+                                                <h6>Este perfil es privado</h6>
+                                                <h8>¿Quieres cambiarlo?</h8>
                                             </div>
-
+                                            <br><br><br>
                                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                                <div class="float-right">
-                                                    <button type="submit" class="boton" name="cambiar2">Cambiar a
-                                                        publico</button>
-                                                </div>
+
+                                                <button type="submit" class="boton2 mb-2" name="cambiar2"><i class="fas fa-arrow-right"></i></button>
+
                                             </form>
                                         </div>
                                     </div>
@@ -224,16 +212,8 @@ $usuario = $_SESSION['username'];
                                     where usuario='$usuario'";
                                         $res = mysqli_query($conexion, $query);
                                         if ($res) {
-
-                                    ?>
-                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    <span class="sr-only">Close</span>
-                                                </button>
-                                                El perfil ha pasado a ser publico
-                                            </div>
-                            <?php
+                                            echo '<script>window.location="ajustes.php"</script>';
+                              
                                         }
                                     }
                                 }

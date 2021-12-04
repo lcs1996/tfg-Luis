@@ -4,7 +4,7 @@ if (isset($_POST['anadir'])) {
 
     $id = $_REQUEST['id'];
     $fecha=$_POST['fecha'];
-    $query = "INSERT INTO add_calendario (id,fecha) values ('" . $id . "','" . $fecha . "')";
+    $query = "INSERT INTO img_cal (id,fecha) values ('" . $id . "','" . $fecha . "')";
     $resultado = $conexion->query($query);
 
     if ($resultado) {

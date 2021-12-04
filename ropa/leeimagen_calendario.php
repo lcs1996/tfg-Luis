@@ -16,18 +16,21 @@ $usuario = $_SESSION['username'];
 ?>
 
 <body>
-    <label>
-        <h6>Buscar por dia:</h6>
-    </label>
-    <form method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="cal">Fecha: </label>
+
+    <form class="form-inline" method="post" enctype="multipart/form-data">
+    <div class="input-group mb-2 mr-sm-4">
+  <label>
+  <h6>Buscar por dia:</h6>
+</label>
+  </div>
+        <div class="input-group mb-2 mr-sm-4">
             <input type="date" id="cal" name="fecha">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="boton" name="buscar"> Buscar</button>
-        </div>
+</div>
+        
+            <button type="submit" class="boton2 mb-2" name="buscar"><i class="fas fa-arrow-right"></i></button>
+        
     </form>
+    
     <hr>
     <div class="main">
         <ul class="cards">
@@ -35,12 +38,13 @@ $usuario = $_SESSION['username'];
             if (isset($_POST['buscar'])) {
                 $con = mysqli_connect("localhost", "root", "", "tfg");
                 $fecha = $_POST['fecha'];
-                $query = "SELECT imagenes.id,imagenes.email,imagenes.nombre,
-                imagenes.categoria,imagenes.imagen,imagenes.tipo,add_calendario.id
+                $query = "SELECT imagenes.id,imagenes.usuario,imagenes.nombre,
+                imagenes.categoria,imagenes.imagen,imagenes.tipo,img_cal.id
                 FROM imagenes 
-                INNER JOIN add_calendario
-                where imagenes.email='" . $usuario . "'
-                and imagenes.id=add_calendario.id";
+                INNER JOIN img_cal
+                where imagenes.usuario='" . $usuario . "'
+                and imagenes.id=img_cal.id
+                and fecha='".$fecha."'";
                 $res = mysqli_query($con, $query);
                 while ($row = mysqli_fetch_assoc($res)) {
             ?>
@@ -60,7 +64,7 @@ $usuario = $_SESSION['username'];
         </ul>
 
     </div>
-
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

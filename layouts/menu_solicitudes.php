@@ -46,18 +46,17 @@ $usu = $_SESSION['username'];
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
-        <button id="sidebarCollapse" class="btn navbar-btn">
-            <i class="fas fa-lg fa-bars"></i>
-        </button>
-        <div class="navbar-brand ">
+    <button id="sidebarCollapse" class="boton3 mb-2 mr-sm-2">
+      <i class="fas fa-lg fa-bars"></i>
+    </button>
+    <div class="navbar-brand">
             <form class="form-inline" action="menu_usuarios.php" method="POST">
                 <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario"
                         placeholder="Buscar amigos...">
                 </div>
-                <button type="submit" class="btn btn-secondary mb-2" name="enviar"><i
-                        class="fas fa-paper-plane"></i></button>
+                <button type="submit" class="boton3 mb-2" name="enviar"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
 

@@ -6,11 +6,15 @@
 <?php
 $usuario = $_SESSION['username'];
 ?>
-<label>
+
+<form class="form-inline" method="post" enctype="multipart/form-data">
+
+  <div class="input-group mb-2 mr-sm-4">
+  <label>
   <h6>Buscar articulos por categoria:</h6>
 </label>
-<form method="post" enctype="multipart/form-data">
-  <div class="form-group">
+  </div>
+<div class="input-group mb-2 mr-sm-4">
     <select name="ropa" class="custom-select">
       <option value="camiseta">Camiseta</option>
       <option value="pantalones">Pantalones</option>
@@ -19,9 +23,9 @@ $usuario = $_SESSION['username'];
       <option value="accesorio">Accesorio</option>
     </select>
   </div>
-  <div class="form-group">
-    <button type="submit" class="boton card_btn" name="buscar">Búsqueda</button>
-  </div>
+  
+    <button type="submit" class="boton2 mb-2" name="buscar"><i class="fas fa-arrow-right"></i></button>
+  
 </form>
 <hr>
 
@@ -60,10 +64,9 @@ $usuario = $_SESSION['username'];
           <div class="card">
             <div class="card_image"><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></div>
             <div class="card_content">
-              <form action="../ropa/add_calendario.php?id=<?php echo $row['id']; ?>" method="POST">
-                <label for="cal">Fecha: </label>
+              <form  action="../ropa/add_calendario.php?id=<?php echo $row['id']; ?>" method="POST">
                 <input type="date" id="cal" name="fecha">
-                <button type="submit" class="botona card_btn" name="anadir"> Añadir</button>
+                <button type="submit" class="botona card_btn" name="anadir"> <i class="fas fa-arrow-right"></i></button>
               </form>
               <a type="button" class="botona card_btn" href="../ropa/add_fav.php?id=<?php echo $row['id']; ?>">Favorito</a>
               <a type="button" class="botona card_btn" href="../ropa/eliminar_img.php?id=<?php echo $row['id']; ?>">Eliminar</a>
@@ -74,6 +77,7 @@ $usuario = $_SESSION['username'];
       }
     }
     ?>
+
   </ul>
 
 </div>
