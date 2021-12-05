@@ -99,7 +99,13 @@ $usuario = $_SESSION['username'];
         where de='$usu' OR para='$usu' and estado=1";
         $resultado = $conexion->query($query);
         while ($row = mysqli_fetch_assoc($resultado)) {
+          ?>
+          <a href="amigos.php">
+          <?php
           echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+        ?>
+          </a>
+          <?php
         }
         ?>
       </div>
