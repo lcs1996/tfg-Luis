@@ -13,7 +13,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <script src="../funciones/icons.js"></script>
-    <title></title>
+    <title>Ajustes</title>
+    <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
+  </script>
 </head>
 <?php
 session_start();
@@ -41,6 +51,23 @@ $usuario = $_SESSION['username'];
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+          <a class="nav-link" id="link" href="menu_solicitudes.php">
+            <i class="fas fa-users"></i>
+            Solicitudes de amistad
+            <?php
+            require '../logica/conexion.php';
+            $us = $_SESSION['username'];
+            $query = "SELECT count(*) as total
+        FROM amigos
+        where para='$us' and estado=0";
+            $resultado = $conexion->query($query);
+            while ($row = mysqli_fetch_assoc($resultado)) {
+              echo "(" . $row['total'].")";
+            }
+            ?>
+            <span class="sr-only">(current) </span></a>
+        </li>
                 <li class="nav-item active">
                     <a class="nav-link" id="link" href="menu_acercade.php">
                         <i class="fas fa-info"></i>
@@ -64,6 +91,17 @@ $usuario = $_SESSION['username'];
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
+                <?php
+        require '../logica/conexion.php';
+        $usu = $_SESSION['username'];
+        $query = "SELECT count(*) as total
+        FROM amigos
+        where de='$usu' OR para='$usu' and estado=1";
+        $resultado = $conexion->query($query);
+        while ($row = mysqli_fetch_assoc($resultado)) {
+          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+        }
+        ?>
             </div>
 
             <ul class="list-unstyled components">
@@ -78,9 +116,6 @@ $usuario = $_SESSION['username'];
                 </li>
                 <li>
                     <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
-                </li>
-                <li>
-                    <a onclick="openForm2()" href="#"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
                 </li>
             </ul>
         </nav>
@@ -224,7 +259,9 @@ $usuario = $_SESSION['username'];
                 </div>
             </div>
         </div>
-
+        <?php
+        include("../ropa/images.php");
+        ?>
     </div>
     <footer>
         <?php require('footer.php') ?>

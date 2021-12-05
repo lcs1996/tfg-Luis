@@ -52,6 +52,23 @@ $usuario = $_SESSION['username'];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
+          <a class="nav-link" id="link" href="menu_solicitudes.php">
+            <i class="fas fa-users"></i>
+            Solicitudes de amistad
+            <?php
+            require '../logica/conexion.php';
+            $us = $_SESSION['username'];
+            $query = "SELECT count(*) as total
+        FROM amigos
+        where para='$us' and estado=0";
+            $resultado = $conexion->query($query);
+            while ($row = mysqli_fetch_assoc($resultado)) {
+              echo "(" . $row['total'].")";
+            }
+            ?>
+            <span class="sr-only">(current) </span></a>
+        </li>
+      <li class="nav-item active">
           <a class="nav-link" id="link" href="menu_acercade.php">
             <i class="fas fa-info"></i>
             Acerca de<span class="sr-only">(current) </span></a>
@@ -74,6 +91,17 @@ $usuario = $_SESSION['username'];
     <nav id="sidebar">
       <div class="sidebar-header">
         <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
+        <?php
+        require '../logica/conexion.php';
+        $usu = $_SESSION['username'];
+        $query = "SELECT count(*) as total
+        FROM amigos
+        where de='$usu' OR para='$usu' and estado=1";
+        $resultado = $conexion->query($query);
+        while ($row = mysqli_fetch_assoc($resultado)) {
+          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+        }
+        ?>
       </div>
 
       <ul class="list-unstyled components">
@@ -89,19 +117,14 @@ $usuario = $_SESSION['username'];
         <li>
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
-        <li>
-          <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
-        </li>
       </ul>
     </nav>
     <div id="content">
-      <?php
+        <?php  
+      include("../ropa/images.php");
+      include("../ropa/busqueda_amigos.php");
 
-        include("../ropa/busqueda_amigos.php");
-
-        
-
-      ?>
+        ?>
     </div>
   </div>
   <footer>

@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script src="../funciones/icons.js"></script>
   <script>
@@ -22,14 +20,6 @@
 
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
-    }
-
-    function openForm2() {
-      document.getElementById("myForm2").style.display = "block";
-    }
-
-    function closeForm2() {
-      document.getElementById("myForm2").style.display = "none";
     }
   </script>
   <title></title>
@@ -55,15 +45,30 @@ $usuario = $_SESSION['username'];
                 <button type="submit" class="boton3 mb-2" name="enviar"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
-    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse btn navbar-btn" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item active">
+      <li class="nav-item active">
+          <a class="nav-link" id="link" href="menu_solicitudes.php">
+            <i class="fas fa-users"></i>
+            Solicitudes de amistad
+            <?php
+            require '../logica/conexion.php';
+            $us = $_SESSION['username'];
+            $query = "SELECT count(*) as total
+        FROM amigos
+        where para='$us' and estado=0";
+            $resultado = $conexion->query($query);
+            while ($row = mysqli_fetch_assoc($resultado)) {
+              echo "(" . $row['total'].")";
+            }
+            ?>
+            <span class="sr-only">(current) </span></a>
+        </li>
+      <li class="nav-item active">
           <a class="nav-link" id="link" href="menu_acercade.php">
             <i class="fas fa-info"></i>
             Acerca de<span class="sr-only">(current) </span></a>
@@ -73,7 +78,6 @@ $usuario = $_SESSION['username'];
             <i class="fas fa-user-cog"></i>
             Ajustes<span class="sr-only">(current) </span></a>
         </li>
-
         <li class="nav-item active">
           <a class="nav-link" id="link" href="../logica/salir.php">
             <i class="fas fa-sign-out-alt"></i>
@@ -87,6 +91,17 @@ $usuario = $_SESSION['username'];
     <nav id="sidebar">
       <div class="sidebar-header">
         <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
+        <?php
+        require '../logica/conexion.php';
+        $usu = $_SESSION['username'];
+        $query = "SELECT count(*) as total
+        FROM amigos
+        where de='$usu' OR para='$usu' and estado=1";
+        $resultado = $conexion->query($query);
+        while ($row = mysqli_fetch_assoc($resultado)) {
+          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+        }
+        ?>
       </div>
 
       <ul class="list-unstyled components">
@@ -102,21 +117,20 @@ $usuario = $_SESSION['username'];
         <li>
           <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
         </li>
-        <li>
-          <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
-        </li>
       </ul>
     </nav>
     <div id="content">
-      <?php
+        <?php  
+      include("../ropa/images.php");
 
-      include("../contenido.php");
+      include("../ropa/leeimagen.php");
 
-      ?>
-
+        ?>
     </div>
   </div>
-  </div>
+  <footer>
+    <?php require('footer.php') ?>
+  </footer>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

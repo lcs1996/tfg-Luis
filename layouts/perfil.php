@@ -21,33 +21,32 @@
         function closeForm() {
             document.getElementById("myForm").style.display = "none";
         }
-
     </script>
     <?php
     session_start();
     $usuario = $_SESSION['username'];
     $conexion = mysqli_connect("localhost", "root", "", "tfg");
-    $u=$_REQUEST['usuario'];
-    $infouser = mysqli_query($conexion,"SELECT * FROM usuarios WHERE usuario = '".$u."'");
+    $u = $_REQUEST['usuario'];
+    $infouser = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '" . $u . "'");
     $use = mysqli_fetch_array($infouser);
-  
-    $amigos = mysqli_query($conexion,"SELECT * FROM amigos WHERE de = '".$u."' AND para = '".$usuario."' OR de = '".$usuario."' AND para = '".$u."'");
+
+    $amigos = mysqli_query($conexion, "SELECT * FROM amigos WHERE de = '" . $u . "' AND para = '" . $usuario . "' OR de = '" . $usuario . "' AND para = '" . $u . "'");
     $ami = mysqli_fetch_array($amigos);
     ?>
     <title>Perfil</title>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light blue fixed-top">
-    <button id="sidebarCollapse" class="boton3 mb-2 mr-sm-2">
-      <i class="fas fa-lg fa-bars"></i>
-    </button>
-    <div class="navbar-brand">
+        <button id="sidebarCollapse" class="boton3 mb-2 mr-sm-2">
+            <i class="fas fa-lg fa-bars"></i>
+        </button>
+        <div class="navbar-brand">
             <form class="form-inline" action="menu_usuarios.php" method="POST">
                 <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
                 <div class="input-group mb-2 mr-sm-2">
-                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario"
-                        placeholder="Buscar amigos...">
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="usuario" placeholder="Buscar amigos...">
                 </div>
                 <button type="submit" class="boton3 mb-2" name="enviar"><i class="fas fa-arrow-right"></i></button>
             </form>
@@ -58,6 +57,23 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" id="link" href="menu_solicitudes.php">
+                        <i class="fas fa-users"></i>
+                        Solicitudes de amistad
+                        <?php
+                        require '../logica/conexion.php';
+                        $us = $_SESSION['username'];
+                        $query = "SELECT count(*) as total
+        FROM amigos
+        where para='$us' and estado=0";
+                        $resultado = $conexion->query($query);
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                            echo "(" . $row['total'] . ")";
+                        }
+                        ?>
+                        <span class="sr-only">(current) </span></a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" id="link" href="menu_acercade.php">
                         <i class="fas fa-info"></i>
@@ -81,6 +97,17 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
+                <?php
+                require '../logica/conexion.php';
+                $usu = $_SESSION['username'];
+                $query = "SELECT count(*) as total
+        FROM amigos
+        where de='$usu' OR para='$usu' and estado=1";
+                $resultado = $conexion->query($query);
+                while ($row = mysqli_fetch_assoc($resultado)) {
+                    echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+                }
+                ?>
             </div>
 
             <ul class="list-unstyled components">
@@ -96,9 +123,6 @@
                 <li>
                     <a onclick="openForm()" href="#"><i class="fas fa-upload"></i>Upload</a>
                 </li>
-                <li>
-                    <a href="menu_solicitudes.php"><i class="fas fa-upload"></i>Solicitudes de amistad</a>
-                </li>
             </ul>
         </nav>
         <div id="content">
@@ -111,45 +135,49 @@
                     $usu = $_REQUEST['usuario'];
                     ?>
                     <h3><?php echo $usu; ?></h3>
-                    <?php if($usuario != $u) {?>
-              <form action="" method="post">
-              
-              <?php if(mysqli_num_rows($amigos) >= 1 AND $ami['estado'] == 0) { ?>
-              <h4>Esperando respuesta</h4>
-              <?php } else { ?>
-            <?php if($use['privada'] == 0 AND $ami['estado'] == 0) { ?>
-              <input type="submit" class="btn btn-primary btn-block" name="seguir" value="Enviar solicitud de amistad">
-              <?php } ?>
-              <?php if($use['privada'] == 1 AND $ami['estado'] == 0) { ?>
-              <input type="submit" class="btn btn-primary btn-block" name="seguir" value="Enviar solicitud de amistad">
-              <?php } ?>
-              <?php if($use['privada'] == 1 AND $ami['estado'] == 1) { ?>
-              <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
-              <?php } ?>
-              <?php if($use['privada'] == 0 AND $ami['estado'] == 1) { ?>
-              <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
-              <?php } ?>
+                    <?php if ($usuario != $u) { ?>
+                        <form action="" method="post">
+
+                            <?php if (mysqli_num_rows($amigos) >= 1 and $ami['estado'] == 0) { ?>
+                                <h4>Esperando respuesta</h4>
+                            <?php } else { ?>
+                                <?php if ($use['privada'] == 0 and $ami['estado'] == 0) { ?>
+                                    <input type="submit" class="btn btn-primary btn-block" name="seguir" value="Enviar solicitud de amistad">
+                                <?php } ?>
+                                <?php if ($use['privada'] == 1 and $ami['estado'] == 0) { ?>
+                                    <input type="submit" class="btn btn-primary btn-block" name="seguir" value="Enviar solicitud de amistad">
+                                <?php } ?>
+                                <?php if ($use['privada'] == 1 and $ami['estado'] == 1) { ?>
+                                    <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
+                                <?php } ?>
+                                <?php if ($use['privada'] == 0 and $ami['estado'] == 1) { ?>
+                                    <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
+                                <?php } ?>
 
 
-              <?php } ?>
-              </form>
-              <?php } ?>
+                            <?php } ?>
+                        </form>
+                    <?php } ?>
 
-              <?php
-              if(isset($_POST['seguir'])) {
-                $add = mysqli_query($conexion,"INSERT INTO amigos (de,para,fecha,estado) values ('".$usuario."','$u',now(),'0')");
-                if($add) {echo '<script>window.location="perfil.php?usuario='.$u.'&privada='.$priv.'"</script>';}
-              }
-              ?>
+                    <?php
+                    if (isset($_POST['seguir'])) {
+                        $add = mysqli_query($conexion, "INSERT INTO amigos (de,para,fecha,estado) values ('" . $usuario . "','$u',now(),'0')");
+                        if ($add) {
+                            echo '<script>window.location="perfil.php?usuario=' . $u . '&privada=' . $priv . '"</script>';
+                        }
+                    }
+                    ?>
 
-              <?php
-              if(isset($_POST['dejarseguir'])) {
-                $add = mysqli_query($conexion,"DELETE FROM amigos WHERE de = '$u' AND para = '".$usuario."' OR de = '".$usuario."' AND para = '$u'");
-                if($add) {echo '<script>window.location="perfil.php?usuario='.$u.'&privada='.$priv.'"</script>';}
-              }
-              ?>
-                  
-                   
+                    <?php
+                    if (isset($_POST['dejarseguir'])) {
+                        $add = mysqli_query($conexion, "DELETE FROM amigos WHERE de = '$u' AND para = '" . $usuario . "' OR de = '" . $usuario . "' AND para = '$u'");
+                        if ($add) {
+                            echo '<script>window.location="perfil.php?usuario=' . $u . '&privada=' . $priv . '"</script>';
+                        }
+                    }
+                    ?>
+
+
                 </div>
             </div>
             <hr>
@@ -157,7 +185,7 @@
                 <ul class="cards">
                     <?php
                     $priv = $_REQUEST['privada'];
-                    $usu=$_REQUEST['usuario'];
+                    $usu = $_REQUEST['usuario'];
                     if ($priv == 0) {
                         $con = mysqli_connect("localhost", "root", "", "tfg");
                         $query = "SELECT * FROM imagenes where usuario='" . $usu . "';";
@@ -172,15 +200,15 @@
                                     </div>
                                 </div>
                             </li>
-                    <?php
+                        <?php
                         }
-                    } elseif ($priv == 1 AND $ami['estado'] == 1) {
-                        
+                    } elseif ($priv == 1 and $ami['estado'] == 1) {
+
                         $con = mysqli_connect("localhost", "root", "", "tfg");
                         $query = "SELECT * FROM imagenes where usuario='" . $usu . "';";
                         $res = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_assoc($res)) {
-                    ?>
+                        ?>
                             <li class="cards_item">
                                 <div class="card">
                                     <div class="card_image"><img data-toggle="modal" data-target="#modal1" class="img-fluid z-depth-1" src="data:<?php echo $row['tipo']; ?>;base64,<?php echo  base64_encode($row['imagen']); ?>" data-target="#indicators" data-slide-to="0" alt="" /></div>
@@ -190,13 +218,16 @@
                                 </div>
                             </li>
                     <?php
-                    }
-                }elseif ($priv == 1 AND $ami['estado'] == 0) {
+                        }
+                    } elseif ($priv == 1 and $ami['estado'] == 0) {
                         echo "<h2>Este perfil es privado</h2>";
                     }
                     ?>
                 </ul>
             </div>
+            <?php
+            include("../ropa/images.php");
+            ?>
         </div>
     </div>
 
@@ -215,12 +246,3 @@
 </body>
 
 </html>
-<?php
-                   /*  $usu = $_REQUEST['usuario'];
-                    ?>
-                    <h3><?php echo $usu; ?></h3>
-                    <span class="float-right">
-                        <a class="boton" href="usu.php?usuario=<?php echo $usu; ?>">
-                            Seguir
-                        </a>
-                    </span> */
