@@ -163,7 +163,7 @@ $usuario = $_SESSION['username'];
                                     $nueva = $_POST['nueva'];
 
                                     $query = "UPDATE usuarios set contrasena='$nueva' 
-                where usuario='$usuario' and contrasena='$antigua'";
+                                    where usuario='$usuario' and contrasena='$antigua'";
                                     $resultado = mysqli_query($conexion, $query);
                                     if ($resultado) {
 

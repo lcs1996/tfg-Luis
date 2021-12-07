@@ -27,6 +27,7 @@
     $usuario = $_SESSION['username'];
     $conexion = mysqli_connect("localhost", "root", "", "tfg");
     $u = $_REQUEST['usuario'];
+
     $infouser = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '" . $u . "'");
     $use = mysqli_fetch_array($infouser);
 
@@ -153,8 +154,6 @@
                                 <?php if ($use['privada'] == 0 and $ami['estado'] == 1) { ?>
                                     <input type="submit" class="btn btn-danger btn-block" name="dejarseguir" value="Dejar de seguir">
                                 <?php } ?>
-
-
                             <?php } ?>
                         </form>
                     <?php } ?>

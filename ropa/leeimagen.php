@@ -56,7 +56,7 @@ $usuario = $_SESSION['username'];
       ?>
       <?php
       $con = mysqli_connect("localhost", "root", "", "tfg");
-      $query = "SELECT * FROM imagenes where usuario='" . $usuario . "';";
+      $query = "SELECT * FROM imagenes where usuario='" . $usuario . "'";
       $res = mysqli_query($con, $query);
       while ($row = mysqli_fetch_assoc($res)) {
       ?>
