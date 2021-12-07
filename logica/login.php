@@ -36,8 +36,6 @@
         if (empty($_POST['usuario'])) {
             $error[] = "Necesitas usuario";
         }
-        
-
     }
     if (isset($_POST['entrar']) && empty($error) && $array['contar'] > 0) {
         $_SESSION['username'] = $usuario;
@@ -52,11 +50,11 @@
                             <h4>Bienvenido</h4>
                             <div class="col-12">
                                 <label>Usuario</label>
-                                <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+                                <input type="text" name="usuario" class="form-control" placeholder="Usuario" required>
                             </div>
                             <div class="col-12">
                                 <label>Contraseña</label>
-                                <input type="password" name="clave" class="form-control" placeholder="Contraseña">
+                                <input type="password" name="clave" class="form-control" placeholder="Contraseña" required>
                             </div>
                             <div class="col-12">
                                 <div class="form-check">

@@ -8,9 +8,6 @@ grant all privileges on tfg.* to 'luis'@'localhost';
 
 /* Creación y alta de datos en las tablas: */
 
-drop table if exists usuarios;
-drop table if exists imagenes;
-
 CREATE TABLE `usuarios` ( 
   `id` INT(11) NOT NULL AUTO_INCREMENT , 
   `nombre` VARCHAR(30) NOT NULL , 
@@ -18,7 +15,7 @@ CREATE TABLE `usuarios` (
   `email` VARCHAR(100) NOT NULL , 
   `contrasena` VARCHAR(30) NOT NULL , 
   `privada` INT(11) NOT NULL , 
-  PRIMARY KEY (`id`)); ENGINE = InnoDB;
+  PRIMARY KEY (`id`));
 
 CREATE TABLE `imagenes` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -27,19 +24,16 @@ CREATE TABLE `imagenes` (
   `categoria` varchar(100),
   `imagen` mediumblob,
   `tipo` varchar(100),
-  PRIMARY KEY (`id`)
-);
+  PRIMARY KEY (`id`));
 
 CREATE TABLE `img_favs` (
   `id` int(11),
-  PRIMARY KEY (`id`)
-);
+  PRIMARY KEY (`id`));
 
 CREATE TABLE `img_cal` (
   `id` int(11),
   `fecha` date,
-  PRIMARY KEY (`id`)
-);
+  PRIMARY KEY (`id`));
 
 
 CREATE TABLE `amigos` ( 
@@ -48,4 +42,4 @@ CREATE TABLE `amigos` (
   `para` VARCHAR(30) NOT NULL , 
   `fecha` DATETIME NOT NULL , 
   `estado` INT(11) NOT NULL , 
-  PRIMARY KEY (`id_amigo`)); ENGINE = InnoDB;
+  PRIMARY KEY (`id_amigo`));
