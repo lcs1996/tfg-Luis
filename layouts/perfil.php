@@ -34,7 +34,7 @@
     $amigos = mysqli_query($conexion, "SELECT * FROM amigos WHERE de = '" . $u . "' AND para = '" . $usuario . "' OR de = '" . $usuario . "' AND para = '" . $u . "'");
     $ami = mysqli_fetch_array($amigos);
     ?>
-    <title>Perfil</title>
+    <title>Armario</title>
 </head>
 
 <body>

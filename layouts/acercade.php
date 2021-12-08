@@ -5,9 +5,9 @@
             <div class="container bootstrap snippets bootdey">
                 <div class="row text-center">
                     <div class="col-sm-12 col-md-12 col-md-12">
-                        <h2>What We Offer</h2>
-                        <h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;">Our Services</h2>
-                        <p>Our <span class="highlight">experienced</span> and <span class="highlight">dedicated</span> staff provide these services with a smile.</p>
+                        <h2>Luis Colón Sánchez</h2>
+                        <h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;">Sobre nosotros</h2>
+                        <p>Nuestro <span class="highlight">Armario </span><span class="highlight">Online</span></p>
                     </div>
                     <style>
                         #services {
@@ -65,61 +65,28 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-md-4">
                                     <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-magic highlight"></div>
                                         <div class="text-block">
-                                            <div class="name">Web Design</div>
-                                            <div class="info">Beauty and function</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                            <div class="name">¿Que es?</div>
+                                            <div class="info">Armario Online</div>
+                                            <div class="text">Es un servicio responsable donde el objetivo se centra en la ropa</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-4 col-md-4">
                                     <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-code highlight"></div>
                                         <div class="text-block">
-                                            <div class="name">Development/Coding</div>
-                                            <div class="info">Quality code that lasts</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                            <div class="name">¿Quien puede ser usuario?</div>
+                                            <div class="info">Registro necesario</div>
+                                            <div class="text">La persona necesitara utilizar sus datos como correo y nombre</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-4 col-md-4">
                                     <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-pencil highlight"></div>
                                         <div class="text-block">
-                                            <div class="name">Copy Writing</div>
-                                            <div class="info">Words that tell your story</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-md-4">
-                                    <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-bullhorn highlight"></div>
-                                        <div class="text-block">
-                                            <div class="name">SEO/PPCM</div>
-                                            <div class="info">Converting users to customers</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-md-4">
-                                    <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-eye highlight"></div>
-                                        <div class="text-block">
-                                            <div class="name">Branding/Identity</div>
-                                            <div class="info">Leave a lasting impression</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-md-4">
-                                    <div class="service-block" style="visibility: visible;">
-                                        <div class="ico fa fa-umbrella highlight"></div>
-                                        <div class="text-block">
-                                            <div class="name">Strategy/Planning</div>
-                                            <div class="info">Thinking beyond tomorrow</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </div>
+                                            <div class="name">¿Como subir articulos?</div>
+                                            <div class="info">Necesitaras imagenes</div>
+                                            <div class="text">Cualquier usuario registrado podrá subir fotos de ropa</div>
                                         </div>
                                     </div>
                                 </div>

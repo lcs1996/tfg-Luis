@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="layouts/estilo.css">
   <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-  <title>Web</title>
+  <title>Armario</title>
 </head>
 
 <body>

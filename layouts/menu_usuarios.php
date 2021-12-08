@@ -22,7 +22,7 @@
       document.getElementById("myForm").style.display = "none";
     }
   </script>
-  <title></title>
+  <title>Armario</title>
 </head>
 <?php
 session_start();
