@@ -10,9 +10,6 @@
                 <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="//codeply.com"></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Ayuda</a>
             </li>
         </ul>

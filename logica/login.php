@@ -2,23 +2,16 @@
 <html lang="es">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<link rel="stylesheet" href="../funciones/estilo.css">
+<link rel="stylesheet" href="../funciones/fondo.css">
 
 <head>
     <title>Armario</title>
     <meta charset="utf-8">
     <meta name="description" content="Mi primera pagina">
     <meta name="author" content="Luis">
-    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilo.css">
-    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header>
-
-    </header>
     <?php
     require 'logica/conexion.php';
     if (isset($_POST['entrar'])) {

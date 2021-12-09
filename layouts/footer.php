@@ -9,7 +9,7 @@
             <a href="#"><i class="icon ion-social-snapchat"></i></a>
         <a href="#"><i class="icon ion-social-twitter"></i></a>
         <a href="#"><i class="icon ion-social-facebook"></i></a>
-    <p class="copyright">Company Name © 2021</p>
+    <p class="copyright">Luis Colón © 2021</p>
     </div>
         
     </footer>

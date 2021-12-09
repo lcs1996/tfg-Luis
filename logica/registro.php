@@ -63,7 +63,7 @@
                             <h4>Registrate</h4>
                             <div class="col-12">
                                 <label>Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" class="form-control" placeholder="Email">
                             </div>
                             <div class="col-12">
                                 <label>Nombre</label>
