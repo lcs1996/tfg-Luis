@@ -103,7 +103,7 @@
                 $usu = $_SESSION['username'];
                 $query = "SELECT count(*) as total
         FROM amigos
-        where de='$usu' OR para='$usu' and estado=1";
+        where estado=1 AND de='$usu' OR para='$usu'";
                 $resultado = $conexion->query($query);
                 while ($row = mysqli_fetch_assoc($resultado)) {
                     echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
@@ -219,6 +219,8 @@
                     <?php
                         }
                     } elseif ($priv == 1 and $ami['estado'] == 0) {
+                        echo "<h2>Este perfil es privado</h2>";
+                    }elseif($priv == 1) {
                         echo "<h2>Este perfil es privado</h2>";
                     }
                     ?>

@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php
+    <div class="fondo">
+         <?php
     require 'logica/conexion.php';
     if (isset($_POST['entrar'])) {
         $usuario = $_POST['usuario'];
@@ -78,6 +79,8 @@
         </div>
 
         </form>
+                </div>
+   
 </body>
 
 </html>

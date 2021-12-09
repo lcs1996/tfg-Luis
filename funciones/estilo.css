@@ -21,6 +21,10 @@ body {
   text-align: center;
 }
 
+.fondo{
+background-color: aqua;
+}
+
 /* FOOTER */
 
 .footer-basic {

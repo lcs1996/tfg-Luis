@@ -1,9 +1,9 @@
 <?php
     $host="localhost";
-    $u="root";
+    $a="root";
     $clave="";
     $bd="tfg";
 
-    $conexion=mysqli_connect($host,$u,$clave,$bd);
+    $conexion=mysqli_connect($host,$a,$clave,$bd);
 
 ?>

@@ -26,10 +26,12 @@ if (isset($_SESSION['username'])) {
   <header>
   <?php require('layouts/header.php') ?>
   </header>
-
-  <?php
+<section class="fondo">
+    <?php
   require('logica/login.php');
   ?>
+</section>
+
   </body>
 
 </html>
