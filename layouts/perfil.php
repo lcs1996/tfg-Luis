@@ -99,16 +99,25 @@
             <div class="sidebar-header">
                 <h7><i class="fas fa-user"></i><?php echo "$usuario" ?></h7>
                 <?php
-                require '../logica/conexion.php';
-                $usu = $_SESSION['username'];
-                $query = "SELECT count(*) as total
+        require '../logica/conexion.php';
+        $usu = $_SESSION['username'];
+        $query = "SELECT count(*) as total
         FROM amigos
-        where estado=1 AND de='$usu' OR para='$usu'";
-                $resultado = $conexion->query($query);
-                while ($row = mysqli_fetch_assoc($resultado)) {
-                    echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
-                }
-                ?>
+        where estado=1 AND de='$usu'";
+
+        $qu = "SELECT count(*) as total
+        FROM amigos
+        where estado=1 AND para='$usu'";
+
+        $res = $conexion->query($qu);
+        $resultado = $conexion->query($query);
+        while ($r = mysqli_fetch_assoc($res)) {
+        while ($row = mysqli_fetch_assoc($resultado)) {
+          $total=((int)$row['total']+$r['total']);
+          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $total;
+        }
+      }
+        ?>
             </div>
 
             <ul class="list-unstyled components">

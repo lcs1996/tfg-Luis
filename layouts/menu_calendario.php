@@ -96,11 +96,20 @@ $usuario = $_SESSION['username'];
         $usu = $_SESSION['username'];
         $query = "SELECT count(*) as total
         FROM amigos
-        where estado=1 AND de='$usu' OR para='$usu'";
+        where estado=1 AND de='$usu'";
+
+        $qu = "SELECT count(*) as total
+        FROM amigos
+        where estado=1 AND para='$usu'";
+
+        $res = $conexion->query($qu);
         $resultado = $conexion->query($query);
+        while ($r = mysqli_fetch_assoc($res)) {
         while ($row = mysqli_fetch_assoc($resultado)) {
-          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $row['total'];
+          $total=((int)$row['total']+$r['total']);
+          echo "<br><i class='fas fa-user-friends'></i>Amigos: " . $total;
         }
+      }
         ?>
       </div>
 
