@@ -169,6 +169,7 @@
 
                     <?php
                     if (isset($_POST['seguir'])) {
+                        $priv = $_REQUEST['privada'];
                         $add = mysqli_query($conexion, "INSERT INTO amigos (de,para,fecha,estado) values ('" . $usuario . "','$u',now(),'0')");
                         if ($add) {
                             echo '<script>window.location="perfil.php?usuario=' . $u . '&privada=' . $priv . '"</script>';
@@ -178,6 +179,7 @@
 
                     <?php
                     if (isset($_POST['dejarseguir'])) {
+                        $priv = $_REQUEST['privada'];
                         $add = mysqli_query($conexion, "DELETE FROM amigos WHERE de = '$u' AND para = '" . $usuario . "' OR de = '" . $usuario . "' AND para = '$u'");
                         if ($add) {
                             echo '<script>window.location="perfil.php?usuario=' . $u . '&privada=' . $priv . '"</script>';
