@@ -13,6 +13,31 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="estilo.css">
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <style>
+    body {
+	background: linear-gradient(-45deg, #FFC39E, #e73c7e, #F2B177, #EF8D9C);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.color{
+    background-color: #EF8D9C;
+}
+
+</style>
 </head>
 
 <body>
@@ -58,7 +83,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="login-form bg-light mt-4 p-4">
+                    <div class="login-form color mt-4 p-4 rounded">
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="row g-3">
                             <h4>Registrate</h4>
                             <div class="col-12">
