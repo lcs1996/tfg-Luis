@@ -23,8 +23,23 @@
 	}
 }
 
-.color{
-    background-color: #EF8D9C;
+.color {
+	background: linear-gradient(-45deg, #FFC39E, #e73c7e, #EA233C, #EF8D9C);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 </style>
