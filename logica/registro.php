@@ -15,7 +15,7 @@
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
     <style>
     body {
-	background: linear-gradient(-45deg, #FFC39E, #e73c7e, #F2B177, #EF8D9C);
+	background: linear-gradient(-45deg, #EF8D9C, #FFC39E);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;

@@ -2,7 +2,7 @@
 <style>
 
 .color{
-    background-color: #EF8D9C;
+    background-color: #EF8D9C, #FFC39E;
 }
 
 </style>

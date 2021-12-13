@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../funciones/estilo.css">
 <style>
     body {
-	background: linear-gradient(-45deg, #FFC39E, #e73c7e, #EA233C, #EF8D9C);
+	background: linear-gradient(-45deg, #EF8D9C, #FFC39E,  #EF8D9C);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
@@ -24,7 +24,7 @@
 }
 
 .color {
-	background: linear-gradient(-45deg, #FFC39E, #e73c7e, #EA233C, #EF8D9C);
+	background: linear-gradient(-45deg, #EF8D9C, #FFC39E);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 
